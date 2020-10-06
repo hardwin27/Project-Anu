@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tile_slope_2.png-3bea83834b7a8dc24fcac811b43bb3c4.stex"
+path="res://.import/icon.svg-113f821b6377ba61b217b1218f1dc2e5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/tile_slope_2.png"
-dest_files=[ "res://.import/tile_slope_2.png-3bea83834b7a8dc24fcac811b43bb3c4.stex" ]
+source_file="res://godot-simple-dialog/addons/dialogs/icon.svg"
+dest_files=[ "res://.import/icon.svg-113f821b6377ba61b217b1218f1dc2e5.stex" ]
 
 [params]
 
