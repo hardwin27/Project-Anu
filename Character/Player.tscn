@@ -1,14 +1,21 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Assets/female_tilesheet.png" type="Texture" id=1]
 [ext_resource path="res://Character/Player.gd" type="Script" id=2]
+[ext_resource path="res://addons/blocking_dialog_box/blocking_dialog_box.gd" type="Script" id=3]
+[ext_resource path="res://addons/blocking_dialog_box/blocking_input_box.gd" type="Script" id=4]
+[ext_resource path="res://addons/blocking_dialog_box/blocking_list_selection.gd" type="Script" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 28, 42.6667 )
+extents = Vector2( 24, 32 )
 
-[sub_resource type="Animation" id=2]
-resource_name = "Grab"
-loop = true
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 11, 32 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Attack"
+length = 0.5
+step = 0.25
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -16,13 +23,65 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 13, 14 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AttackArea/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 11 ]
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 7, -16 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
+resource_name = "FirstTimeEnteringDream"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1, 1.5, 2, 3, 4 ),
+"transitions": PoolRealArray( 2.99295e-06, 0.000471648, 0.000880126, 0.00182233, 3.2708e-05 ),
+"update": 0,
+"values": [ Vector2( 0.75, 0.75 ), Vector2( -0.75, 0.75 ), Vector2( 0.75, 0.75 ), Vector2( -0.75, 0.75 ), Vector2( 0.75, 0.75 ) ]
+}
+
+[sub_resource type="Animation" id=5]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -36,8 +95,60 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 0 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("AttackArea/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -16 ) ]
+}
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=6]
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 5, -16 ) ]
+}
+
+[sub_resource type="Animation" id=7]
 length = 0.4
 loop = true
 step = 0.2
@@ -53,33 +164,110 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 9, 10 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("AttackArea/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -16 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 72, 32 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 35, 38 )
 
 [node name="Player" type="KinematicBody2D"]
-scale = Vector2( 0.75, 0.75 )
 collision_layer = 2
 collision_mask = 9
 script = ExtResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, -16 )
-texture = ExtResource( 1 )
-vframes = 3
-hframes = 9
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -2.66667 )
+[node name="Collision" type="CollisionShape2D" parent="."]
+self_modulate = Color( 0, 0, 1, 1 )
+position = Vector2( 0, -6 )
 shape = SubResource( 1 )
+
+[node name="AttackArea" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+self_modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 24, -6 )
+shape = SubResource( 2 )
+disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
-anims/Grab = SubResource( 2 )
-anims/Idle = SubResource( 3 )
-anims/Walk = SubResource( 4 )
-
-[node name="HandPosition" type="Position2D" parent="."]
-position = Vector2( 28, 4 )
+anims/Attack = SubResource( 3 )
+anims/FirstTimeEnteringDream = SubResource( 4 )
+anims/Idle = SubResource( 5 )
+anims/PlaceItem = SubResource( 6 )
+anims/Walk = SubResource( 7 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 0, -124 )
+position = Vector2( 0, -16 )
 current = true
 smoothing_enabled = true
+smoothing_speed = 10.0
+
+[node name="BlockingDialogBox" type="CanvasLayer" parent="."]
+script = ExtResource( 3 )
+
+[node name="BlockingInputBox" type="CanvasLayer" parent="."]
+script = ExtResource( 4 )
+
+[node name="BlockingListSelection" type="CanvasLayer" parent="."]
+script = ExtResource( 5 )
+
+[node name="InteractionArea" type="Area2D" parent="."]
+collision_layer = 512
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+self_modulate = Color( 1, 1, 0, 1 )
+position = Vector2( 0, -6 )
+shape = SubResource( 8 )
+
+[node name="PickupArea" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
+position = Vector2( 0, -6 )
+shape = SubResource( 9 )
+
+[node name="PlacingArea" type="Node2D" parent="."]
+
+[node name="PlacingPosition" type="Position2D" parent="PlacingArea"]
+position = Vector2( 72, -38 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -16 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 1 )
+vframes = 3
+hframes = 9
+[connection signal="body_entered" from="AttackArea" to="." method="_on_AttackArea_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="body_entered" from="InteractionArea" to="." method="_on_InteractionArea_body_entered"]
+[connection signal="body_exited" from="InteractionArea" to="." method="_on_InteractionArea_body_exited"]
+[connection signal="body_entered" from="PickupArea" to="." method="_on_PickupArea_body_entered"]

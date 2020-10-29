@@ -9,44 +9,58 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "CanvasLayer",
+"class": "BlockingDialogBox",
+"language": "GDScript",
+"path": "res://addons/blocking_dialog_box/blocking_dialog_box.gd"
+}, {
+"base": "CanvasLayer",
+"class": "BlockingInputBox",
+"language": "GDScript",
+"path": "res://addons/blocking_dialog_box/blocking_input_box.gd"
+}, {
+"base": "CanvasLayer",
+"class": "BlockingListSelection",
+"language": "GDScript",
+"path": "res://addons/blocking_dialog_box/blocking_list_selection.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Character",
 "language": "GDScript",
 "path": "res://Character/Character.gd"
 }, {
-"base": "Resource",
-"class": "DialogCharacterResource",
+"base": "Node2D",
+"class": "Stage",
 "language": "GDScript",
-"path": "res://godot-simple-dialog/addons/dialogs/dialog_character_resource.gd"
-}, {
-"base": "Control",
-"class": "DialogNode",
-"language": "GDScript",
-"path": "res://godot-simple-dialog/addons/dialogs/dialog_node.gd"
-}, {
-"base": "Resource",
-"class": "DialogResource",
-"language": "GDScript",
-"path": "res://godot-simple-dialog/addons/dialogs/dialog_resource.gd"
+"path": "res://World/World.gd"
 } ]
 _global_script_class_icons={
+"BlockingDialogBox": "",
+"BlockingInputBox": "",
+"BlockingListSelection": "",
 "Character": "",
-"DialogCharacterResource": "",
-"DialogNode": "",
-"DialogResource": ""
+"Stage": ""
 }
 
 [application]
 
 config/name="ProjectAnu"
-run/main_scene="res://World/World.tscn"
+run/main_scene="res://World/Stage1.tscn"
 config/icon="res://icon.png"
+
+[debug]
+
+shapes/collision/shape_color=Color( 1, 1, 1, 0.501961 )
 
 [display]
 
 window/size/width=960
 window/size/height=640
 window/size/resizable=false
+
+[editor_plugins]
+
+enabled=PoolStringArray( "blocking_dialog_box" )
 
 [input]
 
@@ -70,9 +84,19 @@ duck={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"unicode":0,"echo":false,"script":null)
  ]
 }
-grab={
+interact={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777238,"unicode":0,"echo":false,"script":null)
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":69,"unicode":0,"echo":false,"script":null)
+ ]
+}
+Attack={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"unicode":0,"echo":false,"script":null)
+ ]
+}
+place_item={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"unicode":0,"echo":false,"script":null)
  ]
 }
 
@@ -82,6 +106,13 @@ grab={
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Npc"
 2d_physics/layer_4="Object"
+2d_physics/layer_5="PlayerAttackArea"
+2d_physics/layer_6="ObjectHitArea"
+2d_physics/layer_7="DroppedObject"
+2d_physics/layer_8="PickupArea"
+2d_physics/layer_9="Teleporter"
+2d_physics/layer_10="PlayerInteractionArea"
+2d_physics/layer_11="WorldInteractionArea"
 
 [rendering]
 

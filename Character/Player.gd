@@ -1,93 +1,178 @@
 extends Character
 
-onready var anim_player = $AnimationPlayer
-onready var sprite = $Sprite
-onready var hand_position = $HandPosition
+onready var _anim_player = $AnimationPlayer
+onready var _sprite = $Sprite
+onready var _bdb = $BlockingDialogBox
+onready var _blb = $BlockingInputBox
+onready var _attack_area = $AttackArea
+onready var _placing_area = $PlacingArea
+onready var _world = get_parent()
+onready var _item_preview = null
 
-var attached = false
-var joint = PinJoint2D.new()
-var grabbing = false
-var can_cayote_jump = true
-var jump_was_pressed = false
+var _can_cayote_jump = true
+var _jump_was_pressed = false
+var _npc = null
+var _can_teleport = false
+var _teleport_func = null
 
 func _ready():
 	set_physics_process(true)
-	add_child(joint)
-	joint.set_global_position(hand_position.get_global_position())
-
-
-func _physics_process(delta):
-	if Input.is_action_pressed("move_left"):
-		motion.x = -speed
-	elif Input.is_action_pressed("move_right"):
-		motion.x = speed
-	else:
-		motion.x = 0
-	
-	update_character_sprite()
-	
-	if is_on_wall():
-		for index in get_slide_count():
-			var collision = get_slide_collision(index)
-			if collision.collider.is_in_group("MovableObject") and grabbing:
-				print("GRABBING")
-				if attached == false:
-					attached = true
-					joint.set_node_a(self.get_path())
-					joint.set_node_b(collision.collider.get_path())
-					print(joint.node_b)
-	
-	
-				
-	if Input.is_action_just_pressed("jump") and not attached:
-		jump_was_pressed = true
-		remember_jump()
-		if can_cayote_jump:
-			motion.y = jump_height
-	
-	if is_on_floor():
-		can_cayote_jump = true
-		if jump_was_pressed:
-			motion.y = jump_height
-	else:
-		cayote_jump()
-		if attached:
-			motion.y = 0
-		else:
-			motion.y += gravity
-		
-	motion = move_and_slide(motion, Vector2.UP, false, 4, PI/4, false)
 
 
 func _unhandled_input(event):
-	if event.is_action_pressed("grab"):
-		grabbing = true
-	elif event.is_action_released("grab"):
-		grabbing = false
-		attached = false
-		joint.set_node_b(NodePath(""))
-		print(joint.node_b)
+	if event.is_action_pressed("interact"):
+		if _can_teleport:
+			teleport()
+		
+		if _npc != null:
+			_npc.chat(position, _bdb)
+			_current_state = INTERACTING
+	
+	if event.is_action("Attack") and _current_state != PLACE_ITEM:
+		_anim_player.play("Attack")
+		_current_state = ATTACK
+	
+	if event.is_action("Attack") and _current_state == PLACE_ITEM:
+		if _item_preview != null:
+			if _item_preview.can_spawn():
+				_current_state = IDLE
+				_anim_player.play("Idle")
+				place_item()
+				delete_item_preview()
+	
+	if event.is_action_pressed("place_item"):
+		_current_state = PLACE_ITEM
+		_anim_player.play("PlaceItem")
+		show_item_preview()
+	
+	if event.is_action_released("place_item"):
+		_current_state = IDLE
+		_anim_player.play("Idle")
+		delete_item_preview()
 
 
-func update_character_sprite():
-	if grabbing:
-		anim_player.play("Grab")
-	else:
-		if motion.x > 0:
-			anim_player.play("Walk")
-			sprite.flip_h = false
-		elif motion.x < 0:
-			anim_player.play("Walk")
-			sprite.flip_h = true
+func _physics_process(delta):
+	var direction = get_direction()
+	if _current_state != ON_CUTSCENE:
+		if direction > 0:
+			_sprite.flip_h = false
+			_attack_area.scale.x = 1
+			_placing_area.scale.x = 1
+		elif direction < 0:
+			_sprite.flip_h = true
+			_attack_area.scale.x = -1
+			_placing_area.scale.x = -1
+	if _current_state == IDLE or _current_state == WALK:
+		if direction == 0:
+			_current_state = IDLE
+			_anim_player.play("Idle")
 		else:
-			anim_player.play("Idle")
+			_current_state = WALK
+			_anim_player.play("Walk")
+		_motion.x = direction * _speed
+		
+		if Input.is_action_just_pressed("jump"):
+			_jump_was_pressed = true
+			remember_jump()
+			if _can_cayote_jump:
+				_motion.y = _jump_height
+	
+		if is_on_floor():
+			_can_cayote_jump = true
+			if _jump_was_pressed:
+				_motion.y = _jump_height
+		else:
+			cayote_jump()
+			_motion.y += _gravity
+	
+	else:
+		_motion = Vector2.ZERO
+			
+	_motion = move_and_slide(_motion, Vector2.UP, false, 4, PI/4, false)
+
+
+func _on_InteractionArea_body_entered(body):
+	_npc = body
+
+
+func _on_InteractionArea_body_exited(body):
+	_npc = null
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "Attack":
+		_current_state = IDLE
+	elif anim_name == "FirstTimeEnteringDream":
+		_bdb.append_text("Whooaa...[break]", 100)
+		yield(_bdb, "break_ended")
+		_bdb.hide_box()
+		_bdb.append_text("Where the f am i?\n[break]", 100)
+		yield(_bdb, "break_ended")
+		_bdb.hide_box()
+		_bdb.append_text("Am i, in...\n", 100)
+		_bdb.append_text("ISEKAI???\n[break]",100)
+		yield(_bdb, "break_ended")
+		_bdb.hide_box()
+		_current_state = IDLE
+
+
+func _on_AttackArea_body_entered(body):
+	body.damaged(25)
+
+
+func _on_PickupArea_body_entered(body):
+	_inventory.append(body.duplicate())
+	body.queue_free()
+	print(_inventory)
+
+
+func get_direction():
+	return  Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 
 
 func remember_jump():
 	yield(get_tree().create_timer(0.1), "timeout")
-	jump_was_pressed = false
+	_jump_was_pressed = false
 
 
 func cayote_jump():
 	yield(get_tree().create_timer(0.1), "timeout")
-	can_cayote_jump = false
+	_can_cayote_jump = false
+
+func place_item():
+	if _inventory != []:
+		var item = load(_inventory[0].get_item()).instance()
+		_world.add_child(item)
+		item.set_global_position(_placing_area.get_node("PlacingPosition").get_global_position())
+		_inventory.remove(0)
+
+
+func show_item_preview():
+	if _inventory != []:
+		var item = load(_inventory[0].get_item()).instance()
+		_item_preview = load(item.get_preview_path()).instance()
+		_placing_area.add_child(_item_preview)
+		_item_preview.set_global_position(_placing_area.get_node("PlacingPosition").get_global_position())
+
+
+func delete_item_preview():
+	if _item_preview != null:
+		_item_preview.queue_free()
+
+
+func set_teleport_func(function):
+	_teleport_func = function
+	_can_teleport = true
+
+
+func remove_teleport_func():
+	_teleport_func = null
+	_can_teleport = false
+
+
+func teleport():
+	_teleport_func.call_func()
+
+
+func first_time_entering_dream():
+	_anim_player.play("FirstTimeEnteringDream")
