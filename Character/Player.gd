@@ -9,11 +9,13 @@ onready var _placing_area = $PlacingArea
 onready var _world = get_parent()
 onready var _item_preview = null
 
+var _health = 200
 var _can_cayote_jump = true
 var _jump_was_pressed = false
 var _npc = null
-var _can_teleport = false
-var _teleport_func = null
+var _can_interact_with_object = false
+var _interact_with_object_func = null
+var _is_attacked = 0
 
 func _ready():
 	set_physics_process(true)
@@ -21,12 +23,14 @@ func _ready():
 
 func _unhandled_input(event):
 	if event.is_action_pressed("interact"):
-		if _can_teleport:
-			teleport()
+		if _can_interact_with_object:
+			interact_with_object()
 		
 		if _npc != null:
+			_anim_player.play("Idle")
+			_current_state = ON_CUTSCENE
 			_npc.chat(position, _bdb)
-			_current_state = INTERACTING
+			_current_state = IDLE
 	
 	if event.is_action("Attack") and _current_state != PLACE_ITEM:
 		_anim_player.play("Attack")
@@ -69,7 +73,11 @@ func _physics_process(delta):
 		else:
 			_current_state = WALK
 			_anim_player.play("Walk")
-		_motion.x = direction * _speed
+		if _is_attacked > 0:
+			_motion.x = -direction * _speed
+			_is_attacked -= 1
+		else:
+			_motion.x = direction * _speed
 		
 		if Input.is_action_just_pressed("jump"):
 			_jump_was_pressed = true
@@ -103,14 +111,10 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "Attack":
 		_current_state = IDLE
 	elif anim_name == "FirstTimeEnteringDream":
-		_bdb.append_text("Whooaa...[break]", 100)
+		_bdb.append_text("...What the hell?[break]", 100)
 		yield(_bdb, "break_ended")
 		_bdb.hide_box()
-		_bdb.append_text("Where the f am i?\n[break]", 100)
-		yield(_bdb, "break_ended")
-		_bdb.hide_box()
-		_bdb.append_text("Am i, in...\n", 100)
-		_bdb.append_text("ISEKAI???\n[break]",100)
+		_bdb.append_text("Where the f am i?[break]", 100)
 		yield(_bdb, "break_ended")
 		_bdb.hide_box()
 		_current_state = IDLE
@@ -123,21 +127,45 @@ func _on_AttackArea_body_entered(body):
 func _on_PickupArea_body_entered(body):
 	_inventory.append(body.duplicate())
 	body.queue_free()
-	print(_inventory)
 
+
+func _on_PlayerHitArea_area_entered(area):
+	_is_attacked = 20
+	_health -= 20
+	print(_health)
+	if _health <= 0:
+		var camera = Camera2D.new()
+		_world.add_child(camera)
+		camera.position = get_global_position()
+		camera.current = true
+		queue_free()
+
+
+func _on_PlayerHitArea_body_entered(body):
+	body.queue_free()
+	_health -= 20
+	print(_health)
+	if _health <= 0:
+		var camera = Camera2D.new()
+		_world.add_child(camera)
+		camera.position = get_global_position()
+		camera.current = true
+		queue_free()
+		
 
 func get_direction():
 	return  Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 
 
 func remember_jump():
-	yield(get_tree().create_timer(0.1), "timeout")
+	yield(get_tree().create_timer(0.2), "timeout")
 	_jump_was_pressed = false
 
 
 func cayote_jump():
-	yield(get_tree().create_timer(0.1), "timeout")
+	yield(get_tree().create_timer(0.2), "timeout")
 	_can_cayote_jump = false
+
 
 func place_item():
 	if _inventory != []:
@@ -160,19 +188,41 @@ func delete_item_preview():
 		_item_preview.queue_free()
 
 
-func set_teleport_func(function):
-	_teleport_func = function
-	_can_teleport = true
+func set_interact_with_object_func(function):
+	_interact_with_object_func = function
+	_can_interact_with_object = true
 
 
-func remove_teleport_func():
-	_teleport_func = null
-	_can_teleport = false
+func remove_interact_with_object_func():
+	_interact_with_object_func = null
+	_can_interact_with_object = false
 
 
-func teleport():
-	_teleport_func.call_func()
+func interact_with_object():
+	_interact_with_object_func.call_func()
 
 
 func first_time_entering_dream():
 	_anim_player.play("FirstTimeEnteringDream")
+
+
+func noticing_the_girl():
+	_bdb.append_text("This place is weird...[break]", 100)
+	yield(_bdb, "break_ended")
+	_bdb.hide_box()
+	_bdb.append_text("???[break]", 100)
+	yield(_bdb, "break_ended")
+	_bdb.hide_box()
+	_bdb.append_text("What's wrong with that little girl?[break]", 100)
+	yield(_bdb, "break_ended")
+	_bdb.hide_box()
+	_bdb.append_text("HEY, YOU OK?[break]", 100)
+	yield(_bdb, "break_ended")
+	_bdb.hide_box()
+	_bdb.append_text("...[break]", 100)
+	yield(_bdb, "break_ended")
+	_bdb.hide_box()
+	_bdb.append_text("Hmmm...[break]", 100)
+	yield(_bdb, "break_ended")
+	_bdb.hide_box()
+	_current_state = IDLE

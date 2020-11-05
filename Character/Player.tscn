@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Assets/female_tilesheet.png" type="Texture" id=1]
 [ext_resource path="res://Character/Player.gd" type="Script" id=2]
@@ -7,10 +7,7 @@
 [ext_resource path="res://addons/blocking_dialog_box/blocking_list_selection.gd" type="Script" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 24, 32 )
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 11, 32 )
+extents = Vector2( 17, 32 )
 
 [sub_resource type="Animation" id=3]
 resource_name = "Attack"
@@ -195,25 +192,22 @@ extents = Vector2( 72, 32 )
 [sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 35, 38 )
 
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 20, 32 )
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 10, 23 )
+
 [node name="Player" type="KinematicBody2D"]
+z_index = 4096
 collision_layer = 2
-collision_mask = 9
+collision_mask = 4105
 script = ExtResource( 2 )
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 self_modulate = Color( 0, 0, 1, 1 )
 position = Vector2( 0, -6 )
 shape = SubResource( 1 )
-
-[node name="AttackArea" type="Area2D" parent="."]
-collision_layer = 16
-collision_mask = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
-self_modulate = Color( 1, 0, 0, 1 )
-position = Vector2( 24, -6 )
-shape = SubResource( 2 )
-disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
@@ -266,8 +260,28 @@ scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 1 )
 vframes = 3
 hframes = 9
-[connection signal="body_entered" from="AttackArea" to="." method="_on_AttackArea_body_entered"]
+
+[node name="AttackArea" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2056
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+self_modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 20, -7 )
+shape = SubResource( 2 )
+disabled = true
+
+[node name="PlayerHitArea" type="Area2D" parent="."]
+collision_layer = 8192
+collision_mask = 16384
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitArea"]
+modulate = Color( 0, 1, 0, 1 )
+shape = SubResource( 10 )
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="body_entered" from="InteractionArea" to="." method="_on_InteractionArea_body_entered"]
 [connection signal="body_exited" from="InteractionArea" to="." method="_on_InteractionArea_body_exited"]
 [connection signal="body_entered" from="PickupArea" to="." method="_on_PickupArea_body_entered"]
+[connection signal="body_entered" from="AttackArea" to="." method="_on_AttackArea_body_entered"]
+[connection signal="area_entered" from="PlayerHitArea" to="." method="_on_PlayerHitArea_area_entered"]
+[connection signal="body_entered" from="PlayerHitArea" to="." method="_on_PlayerHitArea_body_entered"]

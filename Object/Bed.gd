@@ -4,11 +4,11 @@ export var _next_scene: PackedScene
 
 
 func _on_Bed_body_entered(body):
-	body.set_teleport_func(funcref(self, "teleport"))
+	body.set_interact_with_object_func(funcref(self, "teleport"))
 
 
 func _on_Bed_body_exited(body):
-	body.remove_teleport_func()
+	body.remove_interact_with_object_func()
 
 
 func teleport():
