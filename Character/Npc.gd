@@ -14,10 +14,6 @@ func _ready():
 
 
 func chat(source_position, dialog_box):
-	set_npc_direction(source_position)
-	dialog_box.append_text("...[break]", 100)
-	yield(dialog_box, "break_ended")
-	dialog_box.hide_box()
 	emit_signal("_chat_finish")
 
 

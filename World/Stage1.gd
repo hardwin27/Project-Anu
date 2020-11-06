@@ -2,6 +2,7 @@ extends Stage
 
 onready var _noticing_the_girl = $NoticingTheGirl
 onready var _little_girl = $LittleGirl
+onready var _anim_player = $AnimationPlayer
 
 func _ready():
 	_player.set_current_state("ON_CUTSCENE")
@@ -40,3 +41,7 @@ func _on_NoticingTheGirl_body_entered(body):
 	_dialog_box.hide_box()
 	body.set_current_state("IDLE")
 	_noticing_the_girl.queue_free()
+
+
+func _on_EarthquakeStarts_body_entered(body):
+	_anim_player.play("EarthquakeStarts")
