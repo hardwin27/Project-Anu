@@ -1,15 +1,14 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Assets/female_tilesheet.png" type="Texture" id=1]
 [ext_resource path="res://Character/Player.gd" type="Script" id=2]
 [ext_resource path="res://addons/blocking_dialog_box/blocking_dialog_box.gd" type="Script" id=3]
-[ext_resource path="res://addons/blocking_dialog_box/blocking_input_box.gd" type="Script" id=4]
-[ext_resource path="res://addons/blocking_dialog_box/blocking_list_selection.gd" type="Script" id=5]
+[ext_resource path="res://Character/PlayerCamera.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 17, 32 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "Attack"
 length = 0.5
 step = 0.25
@@ -50,7 +49,7 @@ tracks/2/keys = {
 "values": [ Vector2( 7, -16 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "FirstTimeEnteringDream"
 length = 4.0
 tracks/0/type = "value"
@@ -78,7 +77,8 @@ tracks/1/keys = {
 "values": [ Vector2( 0.75, 0.75 ), Vector2( -0.75, 0.75 ), Vector2( 0.75, 0.75 ), Vector2( -0.75, 0.75 ), Vector2( 0.75, 0.75 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
+length = 0.1
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -117,8 +117,8 @@ tracks/2/keys = {
 "values": [ Vector2( 0, -16 ) ]
 }
 
-[sub_resource type="Animation" id=6]
-length = 0.5
+[sub_resource type="Animation" id=5]
+length = 0.1
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -145,7 +145,7 @@ tracks/1/keys = {
 "values": [ Vector2( 5, -16 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 length = 0.4
 loop = true
 step = 0.2
@@ -186,13 +186,13 @@ tracks/2/keys = {
 "values": [ Vector2( 0, -16 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 72, 32 )
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 35, 38 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 20, 32 )
 
 [sub_resource type="RectangleShape2D" id=10]
@@ -211,26 +211,21 @@ shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
-anims/Attack = SubResource( 3 )
-anims/FirstTimeEnteringDream = SubResource( 4 )
-anims/Idle = SubResource( 5 )
-anims/PlaceItem = SubResource( 6 )
-anims/Walk = SubResource( 7 )
+anims/Attack = SubResource( 2 )
+anims/FirstTimeEnteringDream = SubResource( 3 )
+anims/Idle = SubResource( 4 )
+anims/PlaceItem = SubResource( 5 )
+anims/Walk = SubResource( 6 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 0, -16 )
 current = true
 smoothing_enabled = true
 smoothing_speed = 10.0
+script = ExtResource( 4 )
 
 [node name="BlockingDialogBox" type="CanvasLayer" parent="."]
 script = ExtResource( 3 )
-
-[node name="BlockingInputBox" type="CanvasLayer" parent="."]
-script = ExtResource( 4 )
-
-[node name="BlockingListSelection" type="CanvasLayer" parent="."]
-script = ExtResource( 5 )
 
 [node name="InteractionArea" type="Area2D" parent="."]
 collision_layer = 512
@@ -239,7 +234,7 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 self_modulate = Color( 1, 1, 0, 1 )
 position = Vector2( 0, -6 )
-shape = SubResource( 8 )
+shape = SubResource( 7 )
 
 [node name="PickupArea" type="Area2D" parent="."]
 collision_layer = 128
@@ -247,7 +242,7 @@ collision_mask = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
 position = Vector2( 0, -6 )
-shape = SubResource( 9 )
+shape = SubResource( 8 )
 
 [node name="PlacingArea" type="Node2D" parent="."]
 
@@ -268,7 +263,7 @@ collision_mask = 2056
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 self_modulate = Color( 1, 0, 0, 1 )
 position = Vector2( 20, -7 )
-shape = SubResource( 2 )
+shape = SubResource( 9 )
 disabled = true
 
 [node name="PlayerHitArea" type="Area2D" parent="."]

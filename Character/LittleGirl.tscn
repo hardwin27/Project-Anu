@@ -1,0 +1,78 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/character_femaleAdventurer_sheetHD.png" type="Texture" id=1]
+[ext_resource path="res://Character/LittleGirl.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 17, 24 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Happy"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 23 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Normal"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Sad"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 15 ]
+}
+
+[node name="LittleGirl" type="RigidBody2D"]
+collision_layer = 4
+mode = 2
+gravity_scale = 10.0
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+self_modulate = Color( 0, 0, 1, 1 )
+position = Vector2( 0, -2 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -10 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 1 )
+vframes = 5
+hframes = 9
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Happy = SubResource( 3 )
+anims/Normal = SubResource( 4 )
+anims/Sad = SubResource( 2 )

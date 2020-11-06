@@ -29,7 +29,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Character/Character.gd"
 }, {
-"base": "KinematicBody2D",
+"base": "RigidBody2D",
 "class": "Npc",
 "language": "GDScript",
 "path": "res://Character/Npc.gd"
@@ -37,7 +37,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "Stage",
 "language": "GDScript",
-"path": "res://World/World.gd"
+"path": "res://World/Stage.gd"
 } ]
 _global_script_class_icons={
 "BlockingDialogBox": "",

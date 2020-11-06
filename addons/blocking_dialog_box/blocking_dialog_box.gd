@@ -77,7 +77,7 @@ func _process(delta):
 
 func _input(event):
 	if event is InputEventKey:
-		if event.is_pressed():
+		if event.is_action_pressed("interact"):
 			capture_input()
 		else:
 			get_tree().set_input_as_handled()

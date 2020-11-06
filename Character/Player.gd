@@ -3,9 +3,9 @@ extends Character
 onready var _anim_player = $AnimationPlayer
 onready var _sprite = $Sprite
 onready var _bdb = $BlockingDialogBox
-onready var _blb = $BlockingInputBox
 onready var _attack_area = $AttackArea
 onready var _placing_area = $PlacingArea
+onready var _camera = $Camera2D
 onready var _world = get_parent()
 onready var _item_preview = null
 
@@ -24,12 +24,13 @@ func _ready():
 func _unhandled_input(event):
 	if event.is_action_pressed("interact"):
 		if _can_interact_with_object:
-			interact_with_object()
+			_interact_with_object_func.call_func()
 		
 		if _npc != null:
 			_anim_player.play("Idle")
 			_current_state = ON_CUTSCENE
 			_npc.chat(position, _bdb)
+			yield(_npc, "_chat_finish")
 			_current_state = IDLE
 	
 	if event.is_action("Attack") and _current_state != PLACE_ITEM:
@@ -198,31 +199,9 @@ func remove_interact_with_object_func():
 	_can_interact_with_object = false
 
 
-func interact_with_object():
-	_interact_with_object_func.call_func()
+func get_dialog_box():
+	return _bdb
 
 
-func first_time_entering_dream():
-	_anim_player.play("FirstTimeEnteringDream")
-
-
-func noticing_the_girl():
-	_bdb.append_text("This place is weird...[break]", 100)
-	yield(_bdb, "break_ended")
-	_bdb.hide_box()
-	_bdb.append_text("???[break]", 100)
-	yield(_bdb, "break_ended")
-	_bdb.hide_box()
-	_bdb.append_text("What's wrong with that little girl?[break]", 100)
-	yield(_bdb, "break_ended")
-	_bdb.hide_box()
-	_bdb.append_text("HEY, YOU OK?[break]", 100)
-	yield(_bdb, "break_ended")
-	_bdb.hide_box()
-	_bdb.append_text("...[break]", 100)
-	yield(_bdb, "break_ended")
-	_bdb.hide_box()
-	_bdb.append_text("Hmmm...[break]", 100)
-	yield(_bdb, "break_ended")
-	_bdb.hide_box()
-	_current_state = IDLE
+func shake_screen(amount):
+	_camera.add_trauma(amount)
