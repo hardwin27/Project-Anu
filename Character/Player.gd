@@ -2,7 +2,7 @@ extends Character
 
 onready var _anim_player = $AnimationPlayer
 onready var _sprite = $Sprite
-onready var _bdb = $BlockingDialogBox
+onready var _dialog_box = $BlockingDialogBox
 onready var _attack_area = $AttackArea
 onready var _placing_area = $PlacingArea
 onready var _camera = $Camera2D
@@ -29,7 +29,7 @@ func _unhandled_input(event):
 		if _npc != null:
 			_anim_player.play("Idle")
 			_current_state = ON_CUTSCENE
-			_npc.chat(position, _bdb)
+			_npc.chat(position, _dialog_box)
 			yield(_npc, "_chat_finish")
 			_current_state = IDLE
 	
@@ -112,12 +112,12 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "Attack":
 		_current_state = IDLE
 	elif anim_name == "FirstTimeEnteringDream":
-		_bdb.append_text("...What the hell?[break]", 100)
-		yield(_bdb, "break_ended")
-		_bdb.hide_box()
-		_bdb.append_text("Where the f am i?[break]", 100)
-		yield(_bdb, "break_ended")
-		_bdb.hide_box()
+		_dialog_box.append_text("Kyoko: ...What the hell?[break]", 100)
+		yield(_dialog_box, "break_ended")
+		_dialog_box.hide_box()
+		_dialog_box.append_text("Kyoko: Where the f am i?[break]", 100)
+		yield(_dialog_box, "break_ended")
+		_dialog_box.hide_box()
 		_current_state = IDLE
 
 
@@ -126,7 +126,10 @@ func _on_AttackArea_body_entered(body):
 
 
 func _on_PickupArea_body_entered(body):
-	_inventory.append(body.duplicate())
+	if body.is_in_group("Objective"):
+		_world.objective_collected(body.name)
+	else:
+		_inventory.append(body.duplicate())
 	body.queue_free()
 
 
@@ -200,7 +203,7 @@ func remove_interact_with_object_func():
 
 
 func get_dialog_box():
-	return _bdb
+	return _dialog_box
 
 
 func shake_screen(amount):
