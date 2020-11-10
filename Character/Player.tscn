@@ -255,6 +255,7 @@ scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 1 )
 vframes = 3
 hframes = 9
+frame = 9
 
 [node name="AttackArea" type="Area2D" parent="."]
 collision_layer = 16

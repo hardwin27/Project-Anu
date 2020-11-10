@@ -5,8 +5,10 @@ onready var _little_girl = $LittleGirl
 onready var _noticing_the_girl = $NoticingTheGirl
 onready var _earthquake_starts = $EarthquakeStarts
 
+var _little_girl_path = "res://Character/LittleGirl.tscn"
+
 func _ready():
-	_player.set_current_state("ON_CUTSCENE")
+# 	_player.set_current_state("ON_CUTSCENE")
 	_little_girl._anim_player.play("Sad")
 
 
