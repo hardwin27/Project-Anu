@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-var _item = "res://Object/Box.tscn"
+export (String) var _item
 
 
 func get_item():

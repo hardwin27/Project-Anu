@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/blockRed.png" type="Texture" id=1]
+[ext_resource path="res://Object/Box.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 32 )
+
+[node name="BoxNormal" type="RigidBody2D"]
+collision_layer = 8
+collision_mask = 16415
+gravity_scale = 10.0
+script = ExtResource( 2 )
+_dropped_item_path = "res://Object/DroppedBoxNormal.tscn"
+_preview_path = "res://Object/PreviewBoxNormal.tscn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+self_modulate = Color( 0, 0, 1, 1 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )

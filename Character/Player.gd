@@ -1,7 +1,7 @@
 extends Character
 
 onready var _anim_player = $AnimationPlayer
-onready var _sprite = $Sprite
+onready var _appearance = $Appearance
 onready var _dialog_box = $BlockingDialogBox
 onready var _attack_area = $AttackArea
 onready var _placing_area = $PlacingArea
@@ -16,9 +16,12 @@ var _npc = null
 var _can_interact_with_object = false
 var _interact_with_object_func = null
 var _is_attacked = 0
+var _inventory = [null, null, null]
+var _inventory_index = 0
 
 func _ready():
 	set_physics_process(true)
+	print("inventory_index: %s" % _inventory_index)
 
 
 func _unhandled_input(event):
@@ -54,17 +57,29 @@ func _unhandled_input(event):
 		_current_state = IDLE
 		_anim_player.play("Idle")
 		delete_item_preview()
+	
+	if event.is_action_pressed("inventory_0"):
+		change_inventory_index(0)
+		print("inventory_index: %s" % _inventory_index)
+	
+	if event.is_action_pressed("inventory_1"):
+		change_inventory_index(1)
+		print("inventory_index: %s" % _inventory_index)
+	
+	if event.is_action_pressed("inventory_2"):
+		change_inventory_index(2)
+		print("inventory_index: %s" % _inventory_index)
 
 
 func _physics_process(delta):
 	var direction = get_direction()
 	if _current_state != ON_CUTSCENE:
 		if direction > 0:
-			_sprite.flip_h = false
+			_appearance.scale.x = 1
 			_attack_area.scale.x = 1
 			_placing_area.scale.x = 1
 		elif direction < 0:
-			_sprite.flip_h = true
+			_appearance.scale.x = -1
 			_attack_area.scale.x = -1
 			_placing_area.scale.x = -1
 	if _current_state == IDLE or _current_state == WALK:
@@ -126,11 +141,20 @@ func _on_AttackArea_body_entered(body):
 
 
 func _on_PickupArea_body_entered(body):
+	var selected_index = null
 	if body.is_in_group("Objective"):
 		_world.objective_collected(body.name)
 	else:
-		_inventory.append(body.duplicate())
-	body.queue_free()
+#		_inventory.append(body.duplicate())
+		if _inventory[_inventory_index] == null:
+			selected_index = _inventory_index
+		else:
+			selected_index = _inventory.find(null)
+		
+		if selected_index != null and selected_index != -1:
+			print("inventory_index: %s" % selected_index)
+			_inventory[selected_index] = body.duplicate()
+			body.queue_free()
 
 
 func _on_PlayerHitArea_area_entered(area):
@@ -172,24 +196,35 @@ func cayote_jump():
 
 
 func place_item():
-	if _inventory != []:
-		var item = load(_inventory[0].get_item()).instance()
+	if _inventory[_inventory_index] != null:
+		var item = load(_inventory[_inventory_index].get_item()).instance()
 		_world.add_child(item)
 		item.set_global_position(_placing_area.get_node("PlacingPosition").get_global_position())
-		_inventory.remove(0)
+		_inventory[_inventory_index] = null
+		print("inventory_index: %s" % _inventory_index)
 
 
 func show_item_preview():
-	if _inventory != []:
-		var item = load(_inventory[0].get_item()).instance()
+	if _inventory[_inventory_index] != null:
+		var item = load(_inventory[_inventory_index].get_item()).instance()
 		_item_preview = load(item.get_preview_path()).instance()
 		_placing_area.add_child(_item_preview)
 		_item_preview.set_global_position(_placing_area.get_node("PlacingPosition").get_global_position())
+		print(_item_preview)
+		print("inventory_index: %s" % _inventory_index)
 
 
 func delete_item_preview():
 	if _item_preview != null:
+		print("DELETE")
 		_item_preview.queue_free()
+
+
+func change_inventory_index(index):
+	_inventory_index = index
+	if _current_state == PLACE_ITEM:
+		delete_item_preview()
+		show_item_preview()
 
 
 func set_interact_with_object_func(function):

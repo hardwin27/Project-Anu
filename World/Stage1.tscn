@@ -1,7 +1,7 @@
 [gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://Character/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Object/Box.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Object/BoxNormal.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Object/Note.tscn" type="PackedScene" id=4]
 [ext_resource path="res://World/Stage1.gd" type="Script" id=5]
 [ext_resource path="res://Character/GroundEnemy.tscn" type="PackedScene" id=6]
@@ -332,28 +332,28 @@ tracks/0/keys = {
 } ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Box:applied_force")
+tracks/1/path = NodePath("BoxNormal:physics_material_override")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 100, 0 ), Vector2( 0, 0 ) ]
+"times": PoolRealArray( 0, 0.1, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ null, SubResource( 18 ), null ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Box:physics_material_override")
+tracks/2/path = NodePath("BoxNormal:applied_force")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ SubResource( 18 ), null ]
+"times": PoolRealArray( 0, 0.1, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 100, 0 ), Vector2( 0, 0 ) ]
 }
 
 [sub_resource type="Animation" id=20]
@@ -404,6 +404,7 @@ script = ExtResource( 5 )
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 4512, 30.0002 )
 scale = Vector2( 16.3, 8.275 )
+z_index = -4096
 texture = ExtResource( 18 )
 
 [node name="TileMap3" type="TileMap" parent="."]
@@ -421,18 +422,17 @@ _next_scene = ExtResource( 11 )
 position = Vector2( 2016, 648 )
 _flip_npc = true
 
-[node name="Box" parent="." instance=ExtResource( 3 )]
+[node name="BoxNormal" parent="." instance=ExtResource( 3 )]
 position = Vector2( 3456, 568 )
-physics_material_override = SubResource( 18 )
 
-[node name="Box2" parent="." instance=ExtResource( 3 )]
+[node name="BoxNormal2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 8096, -384 )
 
-[node name="Box3" parent="." instance=ExtResource( 3 )]
+[node name="BoxNormal3" parent="." instance=ExtResource( 3 )]
 position = Vector2( 8672, -1216 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 256, 840 )
+position = Vector2( 256, 144 )
 z_index = 0
 
 [node name="Light2D" type="Light2D" parent="Player"]
@@ -442,7 +442,14 @@ texture_scale = 3.5
 [node name="Note" parent="." instance=ExtResource( 4 )]
 position = Vector2( 4384, 832 )
 
+[node name="Note2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 8096, -448 )
+
+[node name="Note3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 4960, -448 )
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "FIrstTimeEnteringDream"
 anims/EarthquakeStarts = SubResource( 19 )
 anims/FIrstTimeEnteringDream = SubResource( 20 )
 
@@ -507,10 +514,10 @@ position = Vector2( 7104, -352 )
 position = Vector2( 7424, -352 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_left = -696.0
-margin_top = -1928.0
-margin_right = 9736.0
-margin_bottom = 2040.0
+margin_left = -704.0
+margin_top = -1952.0
+margin_right = 9728.0
+margin_bottom = 2016.0
 color = Color( 0, 0, 0, 0.588235 )
 __meta__ = {
 "_edit_use_anchors_": false

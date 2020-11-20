@@ -16,7 +16,6 @@ export var _jump_height = -850
 export var _speed = 400
 
 var _current_state = IDLE
-var _inventory = []
 
 
 func set_current_state(state):
