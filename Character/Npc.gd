@@ -18,7 +18,7 @@ func chat(source_position, dialog_box):
 
 
 func set_npc_direction(source_position):
-	if source_position.x < position.x:
+	if source_position.x < get_global_position().x:
 		$Sprite.flip_h = true
 	else:
 		$Sprite.flip_h = false

@@ -1,11 +1,15 @@
 extends Character
 
+signal _change_inventory(index)
+signal _update_slot(index, preview)
+
 onready var _anim_player = $AnimationPlayer
 onready var _appearance = $Appearance
 onready var _dialog_box = $BlockingDialogBox
 onready var _attack_area = $AttackArea
 onready var _placing_area = $PlacingArea
 onready var _camera = $Camera2D
+onready var _health_bar = $HealthBar
 onready var _world = get_parent()
 onready var _item_preview = null
 
@@ -21,7 +25,6 @@ var _inventory_index = 0
 
 func _ready():
 	set_physics_process(true)
-	print("inventory_index: %s" % _inventory_index)
 
 
 func _unhandled_input(event):
@@ -30,11 +33,12 @@ func _unhandled_input(event):
 			_interact_with_object_func.call_func()
 		
 		if _npc != null:
-			_anim_player.play("Idle")
-			_current_state = ON_CUTSCENE
-			_npc.chat(position, _dialog_box)
-			yield(_npc, "_chat_finish")
-			_current_state = IDLE
+			if _current_state != ON_CUTSCENE:
+				_anim_player.play("Idle")
+				_current_state = ON_CUTSCENE
+				_npc.chat(position, _dialog_box)
+				yield(_npc, "_chat_finish")
+				_current_state = IDLE
 	
 	if event.is_action("Attack") and _current_state != PLACE_ITEM:
 		_anim_player.play("Attack")
@@ -60,15 +64,12 @@ func _unhandled_input(event):
 	
 	if event.is_action_pressed("inventory_0"):
 		change_inventory_index(0)
-		print("inventory_index: %s" % _inventory_index)
 	
 	if event.is_action_pressed("inventory_1"):
 		change_inventory_index(1)
-		print("inventory_index: %s" % _inventory_index)
 	
 	if event.is_action_pressed("inventory_2"):
 		change_inventory_index(2)
-		print("inventory_index: %s" % _inventory_index)
 
 
 func _physics_process(delta):
@@ -127,10 +128,13 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "Attack":
 		_current_state = IDLE
 	elif anim_name == "FirstTimeEnteringDream":
-		_dialog_box.append_text("Kyoko: ...What the hell?[break]", 100)
+		_dialog_box.append_text("Kyoko: ...What the...[break]", 100)
 		yield(_dialog_box, "break_ended")
 		_dialog_box.hide_box()
-		_dialog_box.append_text("Kyoko: Where the f am i?[break]", 100)
+		_dialog_box.append_text("Kyoko: ...Where...[break]", 100)
+		yield(_dialog_box, "break_ended")
+		_dialog_box.hide_box()
+		_dialog_box.append_text("Kyoko: Where am i?[break]", 100)
 		yield(_dialog_box, "break_ended")
 		_dialog_box.hide_box()
 		_current_state = IDLE
@@ -144,23 +148,23 @@ func _on_PickupArea_body_entered(body):
 	var selected_index = null
 	if body.is_in_group("Objective"):
 		_world.objective_collected(body.name)
+		body.queue_free()
 	else:
-#		_inventory.append(body.duplicate())
 		if _inventory[_inventory_index] == null:
 			selected_index = _inventory_index
 		else:
 			selected_index = _inventory.find(null)
 		
 		if selected_index != null and selected_index != -1:
-			print("inventory_index: %s" % selected_index)
 			_inventory[selected_index] = body.duplicate()
+			emit_signal("_update_slot", selected_index, body.get_node("Sprite").duplicate())
 			body.queue_free()
 
 
 func _on_PlayerHitArea_area_entered(area):
 	_is_attacked = 20
 	_health -= 20
-	print(_health)
+	_health_bar.update_health(_health)
 	if _health <= 0:
 		var camera = Camera2D.new()
 		_world.add_child(camera)
@@ -172,7 +176,7 @@ func _on_PlayerHitArea_area_entered(area):
 func _on_PlayerHitArea_body_entered(body):
 	body.queue_free()
 	_health -= 20
-	print(_health)
+	_health_bar.update_health(_health)
 	if _health <= 0:
 		var camera = Camera2D.new()
 		_world.add_child(camera)
@@ -201,7 +205,7 @@ func place_item():
 		_world.add_child(item)
 		item.set_global_position(_placing_area.get_node("PlacingPosition").get_global_position())
 		_inventory[_inventory_index] = null
-		print("inventory_index: %s" % _inventory_index)
+		emit_signal("_update_slot", _inventory_index, null)
 
 
 func show_item_preview():
@@ -210,18 +214,16 @@ func show_item_preview():
 		_item_preview = load(item.get_preview_path()).instance()
 		_placing_area.add_child(_item_preview)
 		_item_preview.set_global_position(_placing_area.get_node("PlacingPosition").get_global_position())
-		print(_item_preview)
-		print("inventory_index: %s" % _inventory_index)
 
 
 func delete_item_preview():
 	if _item_preview != null:
-		print("DELETE")
 		_item_preview.queue_free()
 
 
 func change_inventory_index(index):
 	_inventory_index = index
+	emit_signal("_change_inventory", index)
 	if _current_state == PLACE_ITEM:
 		delete_item_preview()
 		show_item_preview()
@@ -243,3 +245,7 @@ func get_dialog_box():
 
 func shake_screen(amount):
 	_camera.add_trauma(amount)
+
+
+func play_animation(anim_name):
+	_anim_player.play(anim_name)

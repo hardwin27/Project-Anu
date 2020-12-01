@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Interface/UserInterface.gd" type="Script" id=1]
+[ext_resource path="res://Assets/crosshair026.png" type="Texture" id=3]
+
+[node name="UserInterface" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot0" type="Sprite" parent="."]
+position = Vector2( 416, 608 )
+texture = ExtResource( 3 )
+
+[node name="PreviewPosition" type="Position2D" parent="Slot0"]
+
+[node name="Slot1" type="Sprite" parent="."]
+position = Vector2( 480, 608 )
+texture = ExtResource( 3 )
+
+[node name="PreviewPosition" type="Position2D" parent="Slot1"]
+
+[node name="Slot2" type="Sprite" parent="."]
+position = Vector2( 544, 608 )
+texture = ExtResource( 3 )
+
+[node name="PreviewPosition" type="Position2D" parent="Slot2"]

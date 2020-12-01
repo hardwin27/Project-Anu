@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 17, 24 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "Happy"
 length = 0.1
 tracks/0/type = "value"
@@ -22,7 +22,7 @@ tracks/0/keys = {
 "values": [ 23 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "Normal"
 length = 0.1
 tracks/0/type = "value"
@@ -38,8 +38,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "Sad"
+[sub_resource type="Animation" id=4]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -73,6 +72,6 @@ vframes = 5
 hframes = 9
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Happy = SubResource( 3 )
-anims/Normal = SubResource( 4 )
-anims/Sad = SubResource( 2 )
+anims/Happy = SubResource( 2 )
+anims/Normal = SubResource( 3 )
+anims/Sad = SubResource( 4 )

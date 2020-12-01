@@ -2,6 +2,8 @@ extends Area2D
 
 export var _next_scene: PackedScene
 
+var _can_teleport = false
+
 
 func _on_Teleporter_body_entered(body):
 	body.set_interact_with_object_func(funcref(self, "teleport"))
@@ -12,4 +14,9 @@ func _on_Teleporter_body_exited(body):
 
 
 func teleport():
-	get_tree().change_scene_to(_next_scene)
+	if _can_teleport:
+		get_tree().change_scene_to(_next_scene)
+
+
+func set_can_teleport(value):
+	_can_teleport = value

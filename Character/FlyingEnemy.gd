@@ -4,6 +4,7 @@ onready var _sprite = $Sprite
 onready var _shooting_position = $ShootingPosition
 onready var _attack_timer = $AttackTimer
 onready var _world = get_parent()
+onready var _health_bar = $HealthBar
 
 var _player = null
 var _should_chase = true
@@ -54,6 +55,7 @@ func _on_AttackTimer_timeout():
 
 func damaged(damage):
 	_health -= damage
+	_health_bar.update_health(_health)
 	if _health <= 0:
 		queue_free()
 

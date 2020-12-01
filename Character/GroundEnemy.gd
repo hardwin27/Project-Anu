@@ -3,6 +3,7 @@ extends Character
 onready var _anim_player = $AnimationPlayer
 onready var _sprite = $Sprite
 onready var _detection_area = $DetectionArea
+onready var _health_bar = $HealthBar
 
 var _health = 50
 var _player = null
@@ -44,6 +45,7 @@ func _on_DetectionArea_body_exited(body):
 
 func damaged(damage):
 	_health -= damage
+	_health_bar.update_health(_health)
 	_is_attacked = 20
 	if _health <= 0:
 		queue_free()
