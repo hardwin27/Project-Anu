@@ -387,7 +387,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=30]
+[sub_resource type="Animation" id=21]
 resource_name = "GuardianChamber"
 length = 1.5
 tracks/0/type = "value"
@@ -420,8 +420,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=21]
-resource_name = "TopPathEarthquake"
+[sub_resource type="Animation" id=22]
 length = 2.0
 tracks/0/type = "method"
 tracks/0/path = NodePath("Player")
@@ -438,8 +437,7 @@ tracks/0/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=22]
-resource_name = "WhereAreWe-Earthquake"
+[sub_resource type="Animation" id=23]
 tracks/0/type = "method"
 tracks/0/path = NodePath("Player")
 tracks/0/interp = 1
@@ -455,17 +453,14 @@ tracks/0/keys = {
 } ]
 }
 
-[sub_resource type="RectangleShape2D" id=23]
-extents = Vector2( 160, 8 )
-
 [sub_resource type="RectangleShape2D" id=24]
-extents = Vector2( 64, 8 )
+extents = Vector2( 160, 8 )
 
 [sub_resource type="RectangleShape2D" id=25]
 extents = Vector2( 64, 8 )
 
 [sub_resource type="RectangleShape2D" id=26]
-extents = Vector2( 128, 8 )
+extents = Vector2( 64, 8 )
 
 [sub_resource type="RectangleShape2D" id=27]
 extents = Vector2( 128, 8 )
@@ -474,6 +469,9 @@ extents = Vector2( 128, 8 )
 extents = Vector2( 128, 8 )
 
 [sub_resource type="RectangleShape2D" id=29]
+extents = Vector2( 128, 8 )
+
+[sub_resource type="RectangleShape2D" id=30]
 extents = Vector2( 64, 8 )
 
 [node name="Stage1" type="Node2D"]
@@ -507,7 +505,7 @@ physics_material_override = SubResource( 18 )
 position = Vector2( 8096, -352 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 8184, -1464 )
+position = Vector2( 8456, -352 )
 z_index = 0
 
 [node name="Light2D" type="Light2D" parent="Player"]
@@ -526,9 +524,9 @@ position = Vector2( 8096, -416 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/EarthquakeStarts = SubResource( 19 )
 anims/FIrstTimeEnteringDream = SubResource( 20 )
-anims/GuardianChamber = SubResource( 30 )
-anims/TopPathEarthquake = SubResource( 21 )
-anims/WhereAreWe-Earthquake = SubResource( 22 )
+anims/GuardianChamber = SubResource( 21 )
+anims/TopPathEarthquake = SubResource( 22 )
+anims/WhereAreWe-Earthquake = SubResource( 23 )
 
 [node name="Gate" parent="." instance=ExtResource( 9 )]
 position = Vector2( 8352, -384 )
@@ -542,7 +540,7 @@ collision_layer = 1024
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NoticingTheGirl"]
-shape = SubResource( 23 )
+shape = SubResource( 24 )
 
 [node name="EarthquakeStarts" type="Area2D" parent="."]
 position = Vector2( 3328, 576 )
@@ -551,11 +549,11 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EarthquakeStarts"]
 position = Vector2( -64, 128 )
-shape = SubResource( 24 )
+shape = SubResource( 25 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="EarthquakeStarts"]
 position = Vector2( 64, 64 )
-shape = SubResource( 25 )
+shape = SubResource( 26 )
 
 [node name="WhereAreWe" type="Area2D" parent="."]
 position = Vector2( 2432, -32 )
@@ -564,7 +562,7 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WhereAreWe"]
 position = Vector2( 0, 32 )
-shape = SubResource( 26 )
+shape = SubResource( 27 )
 
 [node name="EnemySpotted" type="Area2D" parent="."]
 position = Vector2( 3008, -160 )
@@ -573,7 +571,7 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemySpotted"]
 position = Vector2( 0, 32 )
-shape = SubResource( 27 )
+shape = SubResource( 28 )
 
 [node name="TopPathEarthquake" type="Area2D" parent="."]
 position = Vector2( 7616, -1120 )
@@ -582,7 +580,7 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TopPathEarthquake"]
 position = Vector2( 0, 32 )
-shape = SubResource( 28 )
+shape = SubResource( 29 )
 
 [node name="GuardianChamber" type="Area2D" parent="."]
 position = Vector2( 9408, -1176 )
@@ -591,7 +589,7 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GuardianChamber"]
 position = Vector2( 0, 24 )
-shape = SubResource( 29 )
+shape = SubResource( 30 )
 
 [node name="GiantGuardian" parent="." instance=ExtResource( 14 )]
 position = Vector2( 9664, -1232 )
