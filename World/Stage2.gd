@@ -9,8 +9,8 @@ var _little_girl_path = "res://Character/LittleGirl.tscn"
 
 
 func _ready():
-#	_player.set_current_state("ON_CUTSCENE")
-	pass
+	_player.set_current_state("ON_CUTSCENE")
+#	pass
 
 
 func _unhandled_key_input(event):

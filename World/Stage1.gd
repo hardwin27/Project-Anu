@@ -17,7 +17,7 @@ var _little_girl_path = "res://Character/LittleGirl.tscn"
 var _objective_counter = 0
 
 func _ready():
-#	_player.set_current_state("ON_CUTSCENE")
+	_player.set_current_state("ON_CUTSCENE")
 	_little_girl._anim_player.play("Sad")
 
 
