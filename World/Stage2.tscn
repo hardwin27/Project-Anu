@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://Assets/tileYellow_04.png" type="Texture" id=1]
 [ext_resource path="res://Character/Player.tscn" type="PackedScene" id=2]
@@ -20,6 +20,14 @@
 [ext_resource path="res://Assets/set1_background.png" type="Texture" id=18]
 [ext_resource path="res://Assets/circle_05.png" type="Texture" id=19]
 [ext_resource path="res://Character/RandomDude.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Assets/set1_tiles.png" type="Texture" id=21]
+[ext_resource path="res://Assets/plantGreen_4.png" type="Texture" id=22]
+[ext_resource path="res://Assets/plantGreen_6.png" type="Texture" id=23]
+[ext_resource path="res://Assets/plantGreen_5.png" type="Texture" id=24]
+[ext_resource path="res://Assets/plantGreen_1.png" type="Texture" id=25]
+[ext_resource path="res://Assets/plantGreen_2.png" type="Texture" id=26]
+[ext_resource path="res://Assets/plantGreen_3.png" type="Texture" id=27]
+[ext_resource path="res://Assets/plantTop_yellow.png" type="Texture" id=28]
 
 [sub_resource type="OccluderPolygon2D" id=1]
 polygon = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
@@ -362,6 +370,1451 @@ scale = Vector2( 16.2, 6 )
 z_index = -4096
 texture = ExtResource( 18 )
 
+[node name="BackgroundTexture" type="Node2D" parent="."]
+z_index = -4000
+
+[node name="TextureRect" type="TextureRect" parent="BackgroundTexture"]
+margin_left = -6400.0
+margin_top = -1856.0
+margin_right = 3968.0
+margin_bottom = 1024.0
+texture = ExtResource( 21 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Decoration" type="Node2D" parent="."]
+z_index = -1000
+
+[node name="PlantA" type="Sprite" parent="Decoration"]
+position = Vector2( 534, -87 )
+texture = ExtResource( 25 )
+
+[node name="PlantB" type="Sprite" parent="Decoration"]
+position = Vector2( 598, -87 )
+texture = ExtResource( 26 )
+
+[node name="PlantC" type="Sprite" parent="Decoration"]
+position = Vector2( 662, -87 )
+texture = ExtResource( 27 )
+
+[node name="PlantC2" type="Sprite" parent="Decoration"]
+position = Vector2( 800, 368 )
+texture = ExtResource( 27 )
+
+[node name="PlantC3" type="Sprite" parent="Decoration"]
+position = Vector2( 864, 368 )
+texture = ExtResource( 27 )
+
+[node name="PlantC4" type="Sprite" parent="Decoration"]
+position = Vector2( 928, 368 )
+texture = ExtResource( 27 )
+
+[node name="PlantC5" type="Sprite" parent="Decoration"]
+position = Vector2( 992, 368 )
+texture = ExtResource( 27 )
+
+[node name="PlantC6" type="Sprite" parent="Decoration"]
+position = Vector2( 1056, 368 )
+texture = ExtResource( 27 )
+
+[node name="PlantC7" type="Sprite" parent="Decoration"]
+position = Vector2( 1120, 368 )
+texture = ExtResource( 27 )
+
+[node name="PlantC8" type="Sprite" parent="Decoration"]
+position = Vector2( 1184, 368 )
+texture = ExtResource( 27 )
+
+[node name="PlantC9" type="Sprite" parent="Decoration"]
+position = Vector2( 1248, 368 )
+texture = ExtResource( 27 )
+
+[node name="PlantC10" type="Sprite" parent="Decoration"]
+position = Vector2( 1312, 240 )
+texture = ExtResource( 27 )
+
+[node name="PlantC11" type="Sprite" parent="Decoration"]
+position = Vector2( 1376, 240 )
+texture = ExtResource( 27 )
+
+[node name="PlantC12" type="Sprite" parent="Decoration"]
+position = Vector2( 1440, 240 )
+texture = ExtResource( 27 )
+
+[node name="PlantC13" type="Sprite" parent="Decoration"]
+position = Vector2( 1496, 240 )
+texture = ExtResource( 27 )
+
+[node name="PlantC14" type="Sprite" parent="Decoration"]
+position = Vector2( 1568, 112 )
+texture = ExtResource( 27 )
+
+[node name="PlantC15" type="Sprite" parent="Decoration"]
+position = Vector2( 1632, 112 )
+texture = ExtResource( 27 )
+
+[node name="PlantC16" type="Sprite" parent="Decoration"]
+position = Vector2( 1696, 112 )
+texture = ExtResource( 27 )
+
+[node name="PlantC17" type="Sprite" parent="Decoration"]
+position = Vector2( 1760, 112 )
+texture = ExtResource( 27 )
+
+[node name="PlantC18" type="Sprite" parent="Decoration"]
+position = Vector2( 1824, -16 )
+texture = ExtResource( 27 )
+
+[node name="PlantC19" type="Sprite" parent="Decoration"]
+position = Vector2( 1888, -16 )
+texture = ExtResource( 27 )
+
+[node name="PlantC20" type="Sprite" parent="Decoration"]
+position = Vector2( 1952, -16 )
+texture = ExtResource( 27 )
+
+[node name="PlantC21" type="Sprite" parent="Decoration"]
+position = Vector2( 2016, -16 )
+texture = ExtResource( 27 )
+
+[node name="PlantC22" type="Sprite" parent="Decoration"]
+position = Vector2( 2080, -144 )
+texture = ExtResource( 27 )
+
+[node name="PlantC23" type="Sprite" parent="Decoration"]
+position = Vector2( 2144, -144 )
+texture = ExtResource( 27 )
+
+[node name="PlantC24" type="Sprite" parent="Decoration"]
+position = Vector2( 2208, -144 )
+texture = ExtResource( 27 )
+
+[node name="PlantC25" type="Sprite" parent="Decoration"]
+position = Vector2( 2272, -144 )
+texture = ExtResource( 27 )
+
+[node name="PlantC26" type="Sprite" parent="Decoration"]
+position = Vector2( 2336, -144 )
+texture = ExtResource( 27 )
+
+[node name="PlantC27" type="Sprite" parent="Decoration"]
+position = Vector2( 2400, -144 )
+texture = ExtResource( 27 )
+
+[node name="PlantC28" type="Sprite" parent="Decoration"]
+position = Vector2( 2464, -144 )
+texture = ExtResource( 27 )
+
+[node name="PlantC29" type="Sprite" parent="Decoration"]
+position = Vector2( 2528, -144 )
+texture = ExtResource( 27 )
+
+[node name="PlantC30" type="Sprite" parent="Decoration"]
+position = Vector2( 2592, -144 )
+texture = ExtResource( 27 )
+
+[node name="PlantC31" type="Sprite" parent="Decoration"]
+position = Vector2( 2656, -144 )
+texture = ExtResource( 27 )
+
+[node name="PlantC32" type="Sprite" parent="Decoration"]
+position = Vector2( 2720, -144 )
+texture = ExtResource( 27 )
+
+[node name="PlantC33" type="Sprite" parent="Decoration"]
+position = Vector2( 2784, -144 )
+texture = ExtResource( 27 )
+
+[node name="PlantC34" type="Sprite" parent="Decoration"]
+position = Vector2( 2848, -144 )
+texture = ExtResource( 27 )
+
+[node name="PlantC35" type="Sprite" parent="Decoration"]
+position = Vector2( 2912, -144 )
+texture = ExtResource( 27 )
+
+[node name="PlantC36" type="Sprite" parent="Decoration"]
+position = Vector2( 2976, -144 )
+texture = ExtResource( 27 )
+
+[node name="PlantC37" type="Sprite" parent="Decoration"]
+position = Vector2( 3040, -144 )
+texture = ExtResource( 27 )
+
+[node name="PlantC38" type="Sprite" parent="Decoration"]
+position = Vector2( 3104, -144 )
+texture = ExtResource( 27 )
+
+[node name="PlantC39" type="Sprite" parent="Decoration"]
+position = Vector2( 3168, -144 )
+texture = ExtResource( 27 )
+
+[node name="PlantC40" type="Sprite" parent="Decoration"]
+position = Vector2( 3232, -144 )
+texture = ExtResource( 27 )
+
+[node name="PlantC41" type="Sprite" parent="Decoration"]
+position = Vector2( 3296, -144 )
+texture = ExtResource( 27 )
+
+[node name="PlantC42" type="Sprite" parent="Decoration"]
+position = Vector2( 736, 368 )
+texture = ExtResource( 27 )
+
+[node name="PlantC43" type="Sprite" parent="Decoration"]
+position = Vector2( 672, 368 )
+texture = ExtResource( 27 )
+
+[node name="PlantC44" type="Sprite" parent="Decoration"]
+position = Vector2( 608, 368 )
+texture = ExtResource( 27 )
+
+[node name="PlantC45" type="Sprite" parent="Decoration"]
+position = Vector2( 544, 368 )
+texture = ExtResource( 27 )
+
+[node name="PlantC46" type="Sprite" parent="Decoration"]
+position = Vector2( 480, 368 )
+texture = ExtResource( 27 )
+
+[node name="PlantC47" type="Sprite" parent="Decoration"]
+position = Vector2( 416, 368 )
+texture = ExtResource( 27 )
+
+[node name="PlantC48" type="Sprite" parent="Decoration"]
+position = Vector2( 352, 368 )
+texture = ExtResource( 27 )
+
+[node name="PlantC49" type="Sprite" parent="Decoration"]
+position = Vector2( 288, 368 )
+texture = ExtResource( 27 )
+
+[node name="PlantC50" type="Sprite" parent="Decoration"]
+position = Vector2( 224, 368 )
+texture = ExtResource( 27 )
+
+[node name="PlantC51" type="Sprite" parent="Decoration"]
+position = Vector2( 160, 368 )
+texture = ExtResource( 27 )
+
+[node name="PlantC52" type="Sprite" parent="Decoration"]
+position = Vector2( 96, 368 )
+texture = ExtResource( 27 )
+
+[node name="PlantC53" type="Sprite" parent="Decoration"]
+position = Vector2( 32, 368 )
+texture = ExtResource( 27 )
+
+[node name="PlantC54" type="Sprite" parent="Decoration"]
+position = Vector2( -32, 368 )
+texture = ExtResource( 27 )
+
+[node name="PlantC55" type="Sprite" parent="Decoration"]
+position = Vector2( -96, 368 )
+texture = ExtResource( 27 )
+
+[node name="PlantC56" type="Sprite" parent="Decoration"]
+position = Vector2( -160, 368 )
+texture = ExtResource( 27 )
+
+[node name="PlantC57" type="Sprite" parent="Decoration"]
+position = Vector2( -224, 368 )
+texture = ExtResource( 27 )
+
+[node name="PlantC58" type="Sprite" parent="Decoration"]
+position = Vector2( -288, 368 )
+texture = ExtResource( 27 )
+
+[node name="PlantC59" type="Sprite" parent="Decoration"]
+position = Vector2( -352, 368 )
+texture = ExtResource( 27 )
+
+[node name="PlantC60" type="Sprite" parent="Decoration"]
+position = Vector2( -416, 368 )
+texture = ExtResource( 27 )
+
+[node name="PlantC61" type="Sprite" parent="Decoration"]
+position = Vector2( -480, 368 )
+texture = ExtResource( 27 )
+
+[node name="PlantC62" type="Sprite" parent="Decoration"]
+position = Vector2( -544, 368 )
+texture = ExtResource( 27 )
+
+[node name="PlantC63" type="Sprite" parent="Decoration"]
+position = Vector2( -608, 368 )
+texture = ExtResource( 27 )
+
+[node name="PlantC64" type="Sprite" parent="Decoration"]
+position = Vector2( -672, 112 )
+texture = ExtResource( 27 )
+
+[node name="PlantC65" type="Sprite" parent="Decoration"]
+position = Vector2( -736, 112 )
+texture = ExtResource( 27 )
+
+[node name="PlantC66" type="Sprite" parent="Decoration"]
+position = Vector2( -800, 112 )
+texture = ExtResource( 27 )
+
+[node name="PlantC67" type="Sprite" parent="Decoration"]
+position = Vector2( -864, 112 )
+texture = ExtResource( 27 )
+
+[node name="PlantC68" type="Sprite" parent="Decoration"]
+position = Vector2( -928, 112 )
+texture = ExtResource( 27 )
+
+[node name="PlantC69" type="Sprite" parent="Decoration"]
+position = Vector2( -992, 112 )
+texture = ExtResource( 27 )
+
+[node name="PlantC70" type="Sprite" parent="Decoration"]
+position = Vector2( -1056, 112 )
+texture = ExtResource( 27 )
+
+[node name="PlantC71" type="Sprite" parent="Decoration"]
+position = Vector2( -1120, 112 )
+texture = ExtResource( 27 )
+
+[node name="PlantC72" type="Sprite" parent="Decoration"]
+position = Vector2( -1184, 112 )
+texture = ExtResource( 27 )
+
+[node name="PlantC73" type="Sprite" parent="Decoration"]
+position = Vector2( -1248, 112 )
+texture = ExtResource( 27 )
+
+[node name="PlantC74" type="Sprite" parent="Decoration"]
+position = Vector2( -1312, 112 )
+texture = ExtResource( 27 )
+
+[node name="PlantC75" type="Sprite" parent="Decoration"]
+position = Vector2( -1376, 112 )
+texture = ExtResource( 27 )
+
+[node name="PlantC76" type="Sprite" parent="Decoration"]
+position = Vector2( -1440, 112 )
+texture = ExtResource( 27 )
+
+[node name="PlantC77" type="Sprite" parent="Decoration"]
+position = Vector2( -1504, 112 )
+texture = ExtResource( 27 )
+
+[node name="PlantC78" type="Sprite" parent="Decoration"]
+position = Vector2( -1568, 112 )
+texture = ExtResource( 27 )
+
+[node name="PlantC79" type="Sprite" parent="Decoration"]
+position = Vector2( -1632, 112 )
+texture = ExtResource( 27 )
+
+[node name="PlantC80" type="Sprite" parent="Decoration"]
+position = Vector2( -1696, 112 )
+texture = ExtResource( 27 )
+
+[node name="PlantC81" type="Sprite" parent="Decoration"]
+position = Vector2( -1760, 112 )
+texture = ExtResource( 27 )
+
+[node name="PlantC82" type="Sprite" parent="Decoration"]
+position = Vector2( -1824, 112 )
+texture = ExtResource( 27 )
+
+[node name="PlantC83" type="Sprite" parent="Decoration"]
+position = Vector2( -1888, 112 )
+texture = ExtResource( 27 )
+
+[node name="PlantC84" type="Sprite" parent="Decoration"]
+position = Vector2( -1952, 112 )
+texture = ExtResource( 27 )
+
+[node name="PlantC85" type="Sprite" parent="Decoration"]
+position = Vector2( -2016, 112 )
+texture = ExtResource( 27 )
+
+[node name="PlantC86" type="Sprite" parent="Decoration"]
+position = Vector2( -2080, 112 )
+texture = ExtResource( 27 )
+
+[node name="PlantC87" type="Sprite" parent="Decoration"]
+position = Vector2( -2144, 112 )
+texture = ExtResource( 27 )
+
+[node name="PlantC88" type="Sprite" parent="Decoration"]
+position = Vector2( -2208, 112 )
+texture = ExtResource( 27 )
+
+[node name="PlantC89" type="Sprite" parent="Decoration"]
+position = Vector2( -2272, 112 )
+texture = ExtResource( 27 )
+
+[node name="PlantC90" type="Sprite" parent="Decoration"]
+position = Vector2( -2328, 112 )
+texture = ExtResource( 27 )
+
+[node name="PlantC91" type="Sprite" parent="Decoration"]
+position = Vector2( -2400, 112 )
+texture = ExtResource( 27 )
+
+[node name="PlantC92" type="Sprite" parent="Decoration"]
+position = Vector2( -2464, 112 )
+texture = ExtResource( 27 )
+
+[node name="PlantC93" type="Sprite" parent="Decoration"]
+position = Vector2( -2528, 112 )
+texture = ExtResource( 27 )
+
+[node name="PlantC94" type="Sprite" parent="Decoration"]
+position = Vector2( -2592, 112 )
+texture = ExtResource( 27 )
+
+[node name="PlantC95" type="Sprite" parent="Decoration"]
+position = Vector2( -2656, 112 )
+texture = ExtResource( 27 )
+
+[node name="PlantC96" type="Sprite" parent="Decoration"]
+position = Vector2( -2720, 112 )
+texture = ExtResource( 27 )
+
+[node name="PlantC97" type="Sprite" parent="Decoration"]
+position = Vector2( -2784, 112 )
+texture = ExtResource( 27 )
+
+[node name="PlantC98" type="Sprite" parent="Decoration"]
+position = Vector2( -2848, 112 )
+texture = ExtResource( 27 )
+
+[node name="PlantC99" type="Sprite" parent="Decoration"]
+position = Vector2( -2912, 112 )
+texture = ExtResource( 27 )
+
+[node name="PlantC100" type="Sprite" parent="Decoration"]
+position = Vector2( -2976, 112 )
+texture = ExtResource( 27 )
+
+[node name="PlantC101" type="Sprite" parent="Decoration"]
+position = Vector2( -3040, 112 )
+texture = ExtResource( 27 )
+
+[node name="PlantC102" type="Sprite" parent="Decoration"]
+position = Vector2( -3104, 112 )
+texture = ExtResource( 27 )
+
+[node name="PlantC103" type="Sprite" parent="Decoration"]
+position = Vector2( -3168, 112 )
+texture = ExtResource( 27 )
+
+[node name="PlantC104" type="Sprite" parent="Decoration"]
+position = Vector2( -3232, 112 )
+texture = ExtResource( 27 )
+
+[node name="PlantC105" type="Sprite" parent="Decoration"]
+position = Vector2( -3296, 112 )
+texture = ExtResource( 27 )
+
+[node name="PlantC106" type="Sprite" parent="Decoration"]
+position = Vector2( -1440, -80 )
+texture = ExtResource( 27 )
+
+[node name="PlantC107" type="Sprite" parent="Decoration"]
+position = Vector2( -1504, -80 )
+texture = ExtResource( 27 )
+
+[node name="PlantC108" type="Sprite" parent="Decoration"]
+position = Vector2( -1568, -80 )
+texture = ExtResource( 27 )
+
+[node name="PlantC109" type="Sprite" parent="Decoration"]
+position = Vector2( -1312, -208 )
+texture = ExtResource( 27 )
+
+[node name="PlantC110" type="Sprite" parent="Decoration"]
+position = Vector2( -1248, -208 )
+texture = ExtResource( 27 )
+
+[node name="PlantC111" type="Sprite" parent="Decoration"]
+position = Vector2( -1184, -208 )
+texture = ExtResource( 27 )
+
+[node name="PlantC112" type="Sprite" parent="Decoration"]
+position = Vector2( -928, -208 )
+texture = ExtResource( 27 )
+
+[node name="PlantC113" type="Sprite" parent="Decoration"]
+position = Vector2( -872, -208 )
+texture = ExtResource( 27 )
+
+[node name="PlantC114" type="Sprite" parent="Decoration"]
+position = Vector2( -800, -208 )
+texture = ExtResource( 27 )
+
+[node name="PlantC115" type="Sprite" parent="Decoration"]
+position = Vector2( -1440, -336 )
+texture = ExtResource( 27 )
+
+[node name="PlantC116" type="Sprite" parent="Decoration"]
+position = Vector2( -1504, -336 )
+texture = ExtResource( 27 )
+
+[node name="PlantC117" type="Sprite" parent="Decoration"]
+position = Vector2( -1568, -336 )
+texture = ExtResource( 27 )
+
+[node name="PlantC118" type="Sprite" parent="Decoration"]
+position = Vector2( -2400, -80 )
+texture = ExtResource( 27 )
+
+[node name="PlantC119" type="Sprite" parent="Decoration"]
+position = Vector2( -2336, -80 )
+texture = ExtResource( 27 )
+
+[node name="PlantC120" type="Sprite" parent="Decoration"]
+position = Vector2( -2464, -80 )
+texture = ExtResource( 27 )
+
+[node name="PlantC121" type="Sprite" parent="Decoration"]
+position = Vector2( -2208, -208 )
+texture = ExtResource( 27 )
+
+[node name="PlantC122" type="Sprite" parent="Decoration"]
+position = Vector2( -2144, -208 )
+texture = ExtResource( 27 )
+
+[node name="PlantC123" type="Sprite" parent="Decoration"]
+position = Vector2( -2080, -208 )
+texture = ExtResource( 27 )
+
+[node name="PlantC124" type="Sprite" parent="Decoration"]
+position = Vector2( -2784, -208 )
+texture = ExtResource( 27 )
+
+[node name="PlantC125" type="Sprite" parent="Decoration"]
+position = Vector2( -2848, -208 )
+texture = ExtResource( 27 )
+
+[node name="PlantC126" type="Sprite" parent="Decoration"]
+position = Vector2( -2912, -208 )
+texture = ExtResource( 27 )
+
+[node name="PlantC127" type="Sprite" parent="Decoration"]
+position = Vector2( -3168, -144 )
+texture = ExtResource( 27 )
+
+[node name="PlantC128" type="Sprite" parent="Decoration"]
+position = Vector2( -3232, -144 )
+texture = ExtResource( 27 )
+
+[node name="PlantC129" type="Sprite" parent="Decoration"]
+position = Vector2( -3296, -144 )
+texture = ExtResource( 27 )
+
+[node name="PlantC130" type="Sprite" parent="Decoration"]
+position = Vector2( -2912, -400 )
+texture = ExtResource( 27 )
+
+[node name="PlantC131" type="Sprite" parent="Decoration"]
+position = Vector2( -2848, -400 )
+texture = ExtResource( 27 )
+
+[node name="PlantC132" type="Sprite" parent="Decoration"]
+position = Vector2( -2784, -400 )
+texture = ExtResource( 27 )
+
+[node name="PlantC133" type="Sprite" parent="Decoration"]
+position = Vector2( -2720, -400 )
+texture = ExtResource( 27 )
+
+[node name="PlantC134" type="Sprite" parent="Decoration"]
+position = Vector2( -2656, -400 )
+texture = ExtResource( 27 )
+
+[node name="PlantC135" type="Sprite" parent="Decoration"]
+position = Vector2( -2592, -400 )
+texture = ExtResource( 27 )
+
+[node name="PlantC136" type="Sprite" parent="Decoration"]
+position = Vector2( -1952, -464 )
+texture = ExtResource( 27 )
+
+[node name="PlantC137" type="Sprite" parent="Decoration"]
+position = Vector2( -1888, -464 )
+texture = ExtResource( 27 )
+
+[node name="PlantC138" type="Sprite" parent="Decoration"]
+position = Vector2( -1824, -464 )
+texture = ExtResource( 27 )
+
+[node name="PlantC139" type="Sprite" parent="Decoration"]
+position = Vector2( -1312, -464 )
+texture = ExtResource( 27 )
+
+[node name="PlantC140" type="Sprite" parent="Decoration"]
+position = Vector2( -1248, -464 )
+texture = ExtResource( 27 )
+
+[node name="PlantC141" type="Sprite" parent="Decoration"]
+position = Vector2( -1184, -464 )
+texture = ExtResource( 27 )
+
+[node name="PlantC142" type="Sprite" parent="Decoration"]
+position = Vector2( -1120, -464 )
+texture = ExtResource( 27 )
+
+[node name="PlantC143" type="Sprite" parent="Decoration"]
+position = Vector2( -1056, -464 )
+texture = ExtResource( 27 )
+
+[node name="PlantC144" type="Sprite" parent="Decoration"]
+position = Vector2( -992, -464 )
+texture = ExtResource( 27 )
+
+[node name="PlantC145" type="Sprite" parent="Decoration"]
+position = Vector2( -544, -592 )
+texture = ExtResource( 27 )
+
+[node name="PlantC146" type="Sprite" parent="Decoration"]
+position = Vector2( -480, -592 )
+texture = ExtResource( 27 )
+
+[node name="PlantC147" type="Sprite" parent="Decoration"]
+position = Vector2( -416, -592 )
+texture = ExtResource( 27 )
+
+[node name="PlantC148" type="Sprite" parent="Decoration"]
+position = Vector2( -1312, -656 )
+texture = ExtResource( 27 )
+
+[node name="PlantC149" type="Sprite" parent="Decoration"]
+position = Vector2( -1248, -656 )
+texture = ExtResource( 27 )
+
+[node name="PlantC150" type="Sprite" parent="Decoration"]
+position = Vector2( -1184, -656 )
+texture = ExtResource( 27 )
+
+[node name="PlantC151" type="Sprite" parent="Decoration"]
+position = Vector2( -1120, -656 )
+texture = ExtResource( 27 )
+
+[node name="PlantC152" type="Sprite" parent="Decoration"]
+position = Vector2( -1056, -656 )
+texture = ExtResource( 27 )
+
+[node name="PlantC153" type="Sprite" parent="Decoration"]
+position = Vector2( -992, -656 )
+texture = ExtResource( 27 )
+
+[node name="PlantC154" type="Sprite" parent="Decoration"]
+position = Vector2( -736, -848 )
+texture = ExtResource( 27 )
+
+[node name="PlantC155" type="Sprite" parent="Decoration"]
+position = Vector2( -672, -848 )
+texture = ExtResource( 27 )
+
+[node name="PlantC156" type="Sprite" parent="Decoration"]
+position = Vector2( -608, -848 )
+texture = ExtResource( 27 )
+
+[node name="PlantC157" type="Sprite" parent="Decoration"]
+position = Vector2( -800, -976 )
+texture = ExtResource( 27 )
+
+[node name="PlantC158" type="Sprite" parent="Decoration"]
+position = Vector2( -864, -976 )
+texture = ExtResource( 27 )
+
+[node name="PlantC159" type="Sprite" parent="Decoration"]
+position = Vector2( -928, -976 )
+texture = ExtResource( 27 )
+
+[node name="PlantC160" type="Sprite" parent="Decoration"]
+position = Vector2( -1184, -976 )
+texture = ExtResource( 27 )
+
+[node name="PlantC161" type="Sprite" parent="Decoration"]
+position = Vector2( -1248, -976 )
+texture = ExtResource( 27 )
+
+[node name="PlantC162" type="Sprite" parent="Decoration"]
+position = Vector2( -1312, -976 )
+texture = ExtResource( 27 )
+
+[node name="PlantC163" type="Sprite" parent="Decoration"]
+position = Vector2( -1440, -848 )
+texture = ExtResource( 27 )
+
+[node name="PlantC164" type="Sprite" parent="Decoration"]
+position = Vector2( -1504, -848 )
+texture = ExtResource( 27 )
+
+[node name="PlantC165" type="Sprite" parent="Decoration"]
+position = Vector2( -1568, -848 )
+texture = ExtResource( 27 )
+
+[node name="PlantC166" type="Sprite" parent="Decoration"]
+position = Vector2( -2144, -912 )
+texture = ExtResource( 27 )
+
+[node name="PlantC167" type="Sprite" parent="Decoration"]
+position = Vector2( -2208, -912 )
+texture = ExtResource( 27 )
+
+[node name="PlantC168" type="Sprite" parent="Decoration"]
+position = Vector2( -2272, -912 )
+texture = ExtResource( 27 )
+
+[node name="PlantC169" type="Sprite" parent="Decoration"]
+position = Vector2( -2400, -720 )
+texture = ExtResource( 27 )
+
+[node name="PlantC170" type="Sprite" parent="Decoration"]
+position = Vector2( -2464, -720 )
+texture = ExtResource( 27 )
+
+[node name="PlantC171" type="Sprite" parent="Decoration"]
+position = Vector2( -2528, -720 )
+texture = ExtResource( 27 )
+
+[node name="PlantC172" type="Sprite" parent="Decoration"]
+position = Vector2( -2784, -720 )
+texture = ExtResource( 27 )
+
+[node name="PlantC173" type="Sprite" parent="Decoration"]
+position = Vector2( -2848, -720 )
+texture = ExtResource( 27 )
+
+[node name="PlantC174" type="Sprite" parent="Decoration"]
+position = Vector2( -2912, -720 )
+texture = ExtResource( 27 )
+
+[node name="PlantC175" type="Sprite" parent="Decoration"]
+position = Vector2( -3168, -528 )
+texture = ExtResource( 27 )
+
+[node name="PlantC176" type="Sprite" parent="Decoration"]
+position = Vector2( -3232, -528 )
+texture = ExtResource( 27 )
+
+[node name="PlantC177" type="Sprite" parent="Decoration"]
+position = Vector2( -3296, -528 )
+texture = ExtResource( 27 )
+
+[node name="PlantC178" type="Sprite" parent="Decoration"]
+position = Vector2( -3168, -912 )
+texture = ExtResource( 27 )
+
+[node name="PlantC179" type="Sprite" parent="Decoration"]
+position = Vector2( -3232, -912 )
+texture = ExtResource( 27 )
+
+[node name="PlantC180" type="Sprite" parent="Decoration"]
+position = Vector2( -3296, -912 )
+texture = ExtResource( 27 )
+
+[node name="PlantC181" type="Sprite" parent="Decoration"]
+position = Vector2( -3360, -912 )
+texture = ExtResource( 27 )
+
+[node name="PlantC182" type="Sprite" parent="Decoration"]
+position = Vector2( -3424, -912 )
+texture = ExtResource( 27 )
+
+[node name="PlantC183" type="Sprite" parent="Decoration"]
+position = Vector2( -3488, -912 )
+texture = ExtResource( 27 )
+
+[node name="PlantC184" type="Sprite" parent="Decoration"]
+position = Vector2( -3552, -912 )
+texture = ExtResource( 27 )
+
+[node name="PlantC185" type="Sprite" parent="Decoration"]
+position = Vector2( -3616, -1040 )
+texture = ExtResource( 27 )
+
+[node name="PlantC186" type="Sprite" parent="Decoration"]
+position = Vector2( -3680, -1040 )
+texture = ExtResource( 27 )
+
+[node name="PlantC187" type="Sprite" parent="Decoration"]
+position = Vector2( -3744, -1040 )
+texture = ExtResource( 27 )
+
+[node name="PlantC188" type="Sprite" parent="Decoration"]
+position = Vector2( -3816, -1040 )
+texture = ExtResource( 27 )
+
+[node name="PlantC189" type="Sprite" parent="Decoration"]
+position = Vector2( -3872, -1168 )
+texture = ExtResource( 27 )
+
+[node name="PlantC190" type="Sprite" parent="Decoration"]
+position = Vector2( -3936, -1168 )
+texture = ExtResource( 27 )
+
+[node name="PlantC191" type="Sprite" parent="Decoration"]
+position = Vector2( -4000, -1168 )
+texture = ExtResource( 27 )
+
+[node name="PlantC192" type="Sprite" parent="Decoration"]
+position = Vector2( -4064, -1168 )
+texture = ExtResource( 27 )
+
+[node name="PlantC193" type="Sprite" parent="Decoration"]
+position = Vector2( -4128, -1296 )
+texture = ExtResource( 27 )
+
+[node name="PlantC194" type="Sprite" parent="Decoration"]
+position = Vector2( -4192, -1296 )
+texture = ExtResource( 27 )
+
+[node name="PlantC195" type="Sprite" parent="Decoration"]
+position = Vector2( -4256, -1296 )
+texture = ExtResource( 27 )
+
+[node name="PlantC196" type="Sprite" parent="Decoration"]
+position = Vector2( -4320, -1296 )
+texture = ExtResource( 27 )
+
+[node name="PlantC197" type="Sprite" parent="Decoration"]
+position = Vector2( -4384, -1424 )
+texture = ExtResource( 27 )
+
+[node name="PlantC198" type="Sprite" parent="Decoration"]
+position = Vector2( -4448, -1424 )
+texture = ExtResource( 27 )
+
+[node name="PlantC199" type="Sprite" parent="Decoration"]
+position = Vector2( -4512, -1424 )
+texture = ExtResource( 27 )
+
+[node name="PlantC200" type="Sprite" parent="Decoration"]
+position = Vector2( -4576, -1424 )
+texture = ExtResource( 27 )
+
+[node name="PlantC201" type="Sprite" parent="Decoration"]
+position = Vector2( -4640, -1424 )
+texture = ExtResource( 27 )
+
+[node name="PlantC202" type="Sprite" parent="Decoration"]
+position = Vector2( -4704, -1424 )
+texture = ExtResource( 27 )
+
+[node name="PlantC203" type="Sprite" parent="Decoration"]
+position = Vector2( -4768, -1424 )
+texture = ExtResource( 27 )
+
+[node name="PlantC204" type="Sprite" parent="Decoration"]
+position = Vector2( -4832, -1424 )
+texture = ExtResource( 27 )
+
+[node name="PlantC205" type="Sprite" parent="Decoration"]
+position = Vector2( -4896, -1424 )
+texture = ExtResource( 27 )
+
+[node name="PlantC206" type="Sprite" parent="Decoration"]
+position = Vector2( -4960, -1424 )
+texture = ExtResource( 27 )
+
+[node name="PlantC207" type="Sprite" parent="Decoration"]
+position = Vector2( -5024, -1424 )
+texture = ExtResource( 27 )
+
+[node name="PlantC208" type="Sprite" parent="Decoration"]
+position = Vector2( -5088, -1424 )
+texture = ExtResource( 27 )
+
+[node name="PlantC209" type="Sprite" parent="Decoration"]
+position = Vector2( -5152, -1424 )
+texture = ExtResource( 27 )
+
+[node name="PlantC210" type="Sprite" parent="Decoration"]
+position = Vector2( -5216, -1424 )
+texture = ExtResource( 27 )
+
+[node name="PlantC211" type="Sprite" parent="Decoration"]
+position = Vector2( -5280, -1424 )
+texture = ExtResource( 27 )
+
+[node name="PlantC212" type="Sprite" parent="Decoration"]
+position = Vector2( -5344, -1424 )
+texture = ExtResource( 27 )
+
+[node name="PlantC213" type="Sprite" parent="Decoration"]
+position = Vector2( -5408, -1424 )
+texture = ExtResource( 27 )
+
+[node name="PlantC214" type="Sprite" parent="Decoration"]
+position = Vector2( -5472, -1424 )
+texture = ExtResource( 27 )
+
+[node name="PlantC215" type="Sprite" parent="Decoration"]
+position = Vector2( -5536, -1424 )
+texture = ExtResource( 27 )
+
+[node name="PlantC216" type="Sprite" parent="Decoration"]
+position = Vector2( -5600, -1424 )
+texture = ExtResource( 27 )
+
+[node name="PlantD" type="Sprite" parent="Decoration"]
+position = Vector2( 726, -95 )
+texture = ExtResource( 22 )
+
+[node name="PlantD2" type="Sprite" parent="Decoration"]
+position = Vector2( -800, -216 )
+texture = ExtResource( 22 )
+
+[node name="PlantD3" type="Sprite" parent="Decoration"]
+position = Vector2( -864, -216 )
+texture = ExtResource( 22 )
+
+[node name="PlantD28" type="Sprite" parent="Decoration"]
+position = Vector2( -864, -216 )
+texture = ExtResource( 22 )
+
+[node name="PlantD4" type="Sprite" parent="Decoration"]
+position = Vector2( -1441.5, -343 )
+texture = ExtResource( 22 )
+
+[node name="PlantD5" type="Sprite" parent="Decoration"]
+position = Vector2( -1505.5, -343 )
+texture = ExtResource( 22 )
+
+[node name="PlantD6" type="Sprite" parent="Decoration"]
+position = Vector2( -1569.5, -343 )
+texture = ExtResource( 22 )
+
+[node name="PlantD7" type="Sprite" parent="Decoration"]
+position = Vector2( -1440, -88 )
+texture = ExtResource( 22 )
+
+[node name="PlantD8" type="Sprite" parent="Decoration"]
+position = Vector2( -1504, -88 )
+texture = ExtResource( 22 )
+
+[node name="PlantD9" type="Sprite" parent="Decoration"]
+position = Vector2( -1568, -88 )
+texture = ExtResource( 22 )
+
+[node name="PlantD10" type="Sprite" parent="Decoration"]
+position = Vector2( -1312, -664 )
+texture = ExtResource( 22 )
+
+[node name="PlantD11" type="Sprite" parent="Decoration"]
+position = Vector2( -1248, -664 )
+texture = ExtResource( 22 )
+
+[node name="PlantD12" type="Sprite" parent="Decoration"]
+position = Vector2( -1184, -664 )
+texture = ExtResource( 22 )
+
+[node name="PlantD13" type="Sprite" parent="Decoration"]
+position = Vector2( -1120, -664 )
+texture = ExtResource( 22 )
+
+[node name="PlantD14" type="Sprite" parent="Decoration"]
+position = Vector2( -1056, -664 )
+texture = ExtResource( 22 )
+
+[node name="PlantD15" type="Sprite" parent="Decoration"]
+position = Vector2( -992, -664 )
+texture = ExtResource( 22 )
+
+[node name="PlantD16" type="Sprite" parent="Decoration"]
+position = Vector2( -1312, -984 )
+texture = ExtResource( 22 )
+
+[node name="PlantD17" type="Sprite" parent="Decoration"]
+position = Vector2( -1248, -984 )
+texture = ExtResource( 22 )
+
+[node name="PlantD18" type="Sprite" parent="Decoration"]
+position = Vector2( -1184, -984 )
+texture = ExtResource( 22 )
+
+[node name="PlantD19" type="Sprite" parent="Decoration"]
+position = Vector2( -1952, -472 )
+texture = ExtResource( 22 )
+
+[node name="PlantD20" type="Sprite" parent="Decoration"]
+position = Vector2( -1888, -472 )
+texture = ExtResource( 22 )
+
+[node name="PlantD21" type="Sprite" parent="Decoration"]
+position = Vector2( -1824, -472 )
+texture = ExtResource( 22 )
+
+[node name="PlantD22" type="Sprite" parent="Decoration"]
+position = Vector2( -2336, -88 )
+texture = ExtResource( 22 )
+
+[node name="PlantD23" type="Sprite" parent="Decoration"]
+position = Vector2( -2400, -88 )
+texture = ExtResource( 22 )
+
+[node name="PlantD24" type="Sprite" parent="Decoration"]
+position = Vector2( -2464, -88 )
+texture = ExtResource( 22 )
+
+[node name="PlantD25" type="Sprite" parent="Decoration"]
+position = Vector2( -2592, -408 )
+texture = ExtResource( 22 )
+
+[node name="PlantD26" type="Sprite" parent="Decoration"]
+position = Vector2( -2656, -408 )
+texture = ExtResource( 22 )
+
+[node name="PlantD27" type="Sprite" parent="Decoration"]
+position = Vector2( -2720, -408 )
+texture = ExtResource( 22 )
+
+[node name="PlantD29" type="Sprite" parent="Decoration"]
+position = Vector2( -2784, -408 )
+texture = ExtResource( 22 )
+
+[node name="PlantD30" type="Sprite" parent="Decoration"]
+position = Vector2( -2848, -408 )
+texture = ExtResource( 22 )
+
+[node name="PlantD31" type="Sprite" parent="Decoration"]
+position = Vector2( -2912, -408 )
+texture = ExtResource( 22 )
+
+[node name="PlantD32" type="Sprite" parent="Decoration"]
+position = Vector2( -2912, -728 )
+texture = ExtResource( 22 )
+
+[node name="PlantD33" type="Sprite" parent="Decoration"]
+position = Vector2( -2848, -728 )
+texture = ExtResource( 22 )
+
+[node name="PlantD34" type="Sprite" parent="Decoration"]
+position = Vector2( -2784, -728 )
+texture = ExtResource( 22 )
+
+[node name="PlantD35" type="Sprite" parent="Decoration"]
+position = Vector2( -2528, -728 )
+texture = ExtResource( 22 )
+
+[node name="PlantD36" type="Sprite" parent="Decoration"]
+position = Vector2( -2464, -728 )
+texture = ExtResource( 22 )
+
+[node name="PlantD37" type="Sprite" parent="Decoration"]
+position = Vector2( -2400, -728 )
+texture = ExtResource( 22 )
+
+[node name="PlantD38" type="Sprite" parent="Decoration"]
+position = Vector2( -2272, -920 )
+texture = ExtResource( 22 )
+
+[node name="PlantD39" type="Sprite" parent="Decoration"]
+position = Vector2( -2208, -920 )
+texture = ExtResource( 22 )
+
+[node name="PlantD40" type="Sprite" parent="Decoration"]
+position = Vector2( -2144, -920 )
+texture = ExtResource( 22 )
+
+[node name="PlantD41" type="Sprite" parent="Decoration"]
+position = Vector2( -2912, -216 )
+texture = ExtResource( 22 )
+
+[node name="PlantD42" type="Sprite" parent="Decoration"]
+position = Vector2( -2848, -216 )
+texture = ExtResource( 22 )
+
+[node name="PlantD43" type="Sprite" parent="Decoration"]
+position = Vector2( -2784, -216 )
+texture = ExtResource( 22 )
+
+[node name="PlantE" type="Sprite" parent="Decoration"]
+position = Vector2( 790, -95 )
+texture = ExtResource( 24 )
+
+[node name="PlantE2" type="Sprite" parent="Decoration"]
+position = Vector2( -1312, -216 )
+texture = ExtResource( 24 )
+
+[node name="PlantE3" type="Sprite" parent="Decoration"]
+position = Vector2( -1248, -216 )
+texture = ExtResource( 24 )
+
+[node name="PlantE4" type="Sprite" parent="Decoration"]
+position = Vector2( -1184, -216 )
+texture = ExtResource( 24 )
+
+[node name="PlantE5" type="Sprite" parent="Decoration"]
+position = Vector2( -1312, -472 )
+texture = ExtResource( 24 )
+
+[node name="PlantE6" type="Sprite" parent="Decoration"]
+position = Vector2( -1248, -472 )
+texture = ExtResource( 24 )
+
+[node name="PlantE7" type="Sprite" parent="Decoration"]
+position = Vector2( -1184, -472 )
+texture = ExtResource( 24 )
+
+[node name="PlantE8" type="Sprite" parent="Decoration"]
+position = Vector2( -1120, -472 )
+texture = ExtResource( 24 )
+
+[node name="PlantE9" type="Sprite" parent="Decoration"]
+position = Vector2( -1056, -472 )
+texture = ExtResource( 24 )
+
+[node name="PlantE10" type="Sprite" parent="Decoration"]
+position = Vector2( -992, -472 )
+texture = ExtResource( 24 )
+
+[node name="PlantE11" type="Sprite" parent="Decoration"]
+position = Vector2( -1568, -856 )
+texture = ExtResource( 24 )
+
+[node name="PlantE12" type="Sprite" parent="Decoration"]
+position = Vector2( -1504, -856 )
+texture = ExtResource( 24 )
+
+[node name="PlantE13" type="Sprite" parent="Decoration"]
+position = Vector2( -1440, -856 )
+texture = ExtResource( 24 )
+
+[node name="PlantE14" type="Sprite" parent="Decoration"]
+position = Vector2( -928, -984 )
+texture = ExtResource( 24 )
+
+[node name="PlantE15" type="Sprite" parent="Decoration"]
+position = Vector2( -864, -984 )
+texture = ExtResource( 24 )
+
+[node name="PlantE16" type="Sprite" parent="Decoration"]
+position = Vector2( -800, -984 )
+texture = ExtResource( 24 )
+
+[node name="PlantE17" type="Sprite" parent="Decoration"]
+position = Vector2( -2208, -216 )
+texture = ExtResource( 24 )
+
+[node name="PlantE18" type="Sprite" parent="Decoration"]
+position = Vector2( -2144, -216 )
+texture = ExtResource( 24 )
+
+[node name="PlantE19" type="Sprite" parent="Decoration"]
+position = Vector2( -2080, -216 )
+texture = ExtResource( 24 )
+
+[node name="PlantE20" type="Sprite" parent="Decoration"]
+position = Vector2( -3296, -536 )
+texture = ExtResource( 24 )
+
+[node name="PlantE21" type="Sprite" parent="Decoration"]
+position = Vector2( -3232, -536 )
+texture = ExtResource( 24 )
+
+[node name="PlantE22" type="Sprite" parent="Decoration"]
+position = Vector2( -3168, -536 )
+texture = ExtResource( 24 )
+
+[node name="PlantE23" type="Sprite" parent="Decoration"]
+position = Vector2( -736, -856 )
+texture = ExtResource( 24 )
+
+[node name="PlantE24" type="Sprite" parent="Decoration"]
+position = Vector2( -672, -856 )
+texture = ExtResource( 24 )
+
+[node name="PlantE25" type="Sprite" parent="Decoration"]
+position = Vector2( -608, -856 )
+texture = ExtResource( 24 )
+
+[node name="PlantE26" type="Sprite" parent="Decoration"]
+position = Vector2( -544, -600 )
+texture = ExtResource( 24 )
+
+[node name="PlantE27" type="Sprite" parent="Decoration"]
+position = Vector2( -480, -600 )
+texture = ExtResource( 24 )
+
+[node name="PlantE28" type="Sprite" parent="Decoration"]
+position = Vector2( -416, -600 )
+texture = ExtResource( 24 )
+
+[node name="PlantF" type="Sprite" parent="Decoration"]
+position = Vector2( 854, -87 )
+texture = ExtResource( 23 )
+
+[node name="PlantF2" type="Sprite" parent="Decoration"]
+position = Vector2( 928, 368 )
+texture = ExtResource( 23 )
+
+[node name="PlantF3" type="Sprite" parent="Decoration"]
+position = Vector2( 992, 368 )
+texture = ExtResource( 23 )
+
+[node name="PlantF4" type="Sprite" parent="Decoration"]
+position = Vector2( 1376, 240 )
+texture = ExtResource( 23 )
+
+[node name="PlantF5" type="Sprite" parent="Decoration"]
+position = Vector2( 1440, 240 )
+texture = ExtResource( 23 )
+
+[node name="PlantF6" type="Sprite" parent="Decoration"]
+position = Vector2( 1632, 112 )
+texture = ExtResource( 23 )
+
+[node name="PlantF7" type="Sprite" parent="Decoration"]
+position = Vector2( 1696, 112 )
+texture = ExtResource( 23 )
+
+[node name="PlantF8" type="Sprite" parent="Decoration"]
+position = Vector2( 1888, -16 )
+texture = ExtResource( 23 )
+
+[node name="PlantF9" type="Sprite" parent="Decoration"]
+position = Vector2( 1952, -16 )
+texture = ExtResource( 23 )
+
+[node name="PlantF10" type="Sprite" parent="Decoration"]
+position = Vector2( 2336, -144 )
+texture = ExtResource( 23 )
+
+[node name="PlantF11" type="Sprite" parent="Decoration"]
+position = Vector2( 2400, -144 )
+texture = ExtResource( 23 )
+
+[node name="PlantF12" type="Sprite" parent="Decoration"]
+position = Vector2( 2656, -144 )
+texture = ExtResource( 23 )
+
+[node name="PlantF13" type="Sprite" parent="Decoration"]
+position = Vector2( 2720, -144 )
+texture = ExtResource( 23 )
+
+[node name="PlantF14" type="Sprite" parent="Decoration"]
+position = Vector2( 2976, -144 )
+texture = ExtResource( 23 )
+
+[node name="PlantF15" type="Sprite" parent="Decoration"]
+position = Vector2( 3040, -144 )
+texture = ExtResource( 23 )
+
+[node name="PlantF16" type="Sprite" parent="Decoration"]
+position = Vector2( 224, 368 )
+texture = ExtResource( 23 )
+
+[node name="PlantF17" type="Sprite" parent="Decoration"]
+position = Vector2( 288, 368 )
+texture = ExtResource( 23 )
+
+[node name="PlantF18" type="Sprite" parent="Decoration"]
+position = Vector2( -160, 368 )
+texture = ExtResource( 23 )
+
+[node name="PlantF19" type="Sprite" parent="Decoration"]
+position = Vector2( -96, 368 )
+texture = ExtResource( 23 )
+
+[node name="PlantF20" type="Sprite" parent="Decoration"]
+position = Vector2( -480, 368 )
+texture = ExtResource( 23 )
+
+[node name="PlantF21" type="Sprite" parent="Decoration"]
+position = Vector2( -416, 368 )
+texture = ExtResource( 23 )
+
+[node name="PlantF22" type="Sprite" parent="Decoration"]
+position = Vector2( -864, 112 )
+texture = ExtResource( 23 )
+
+[node name="PlantF23" type="Sprite" parent="Decoration"]
+position = Vector2( -800, 112 )
+texture = ExtResource( 23 )
+
+[node name="PlantF24" type="Sprite" parent="Decoration"]
+position = Vector2( -1312, 112 )
+texture = ExtResource( 23 )
+
+[node name="PlantF25" type="Sprite" parent="Decoration"]
+position = Vector2( -1248, 112 )
+texture = ExtResource( 23 )
+
+[node name="PlantF26" type="Sprite" parent="Decoration"]
+position = Vector2( -1824, 112 )
+texture = ExtResource( 23 )
+
+[node name="PlantF27" type="Sprite" parent="Decoration"]
+position = Vector2( -1760, 112 )
+texture = ExtResource( 23 )
+
+[node name="PlantF28" type="Sprite" parent="Decoration"]
+position = Vector2( -2328, 112 )
+texture = ExtResource( 23 )
+
+[node name="PlantF29" type="Sprite" parent="Decoration"]
+position = Vector2( -2272, 112 )
+texture = ExtResource( 23 )
+
+[node name="PlantF30" type="Sprite" parent="Decoration"]
+position = Vector2( -2656, 112 )
+texture = ExtResource( 23 )
+
+[node name="PlantF31" type="Sprite" parent="Decoration"]
+position = Vector2( -2592, 112 )
+texture = ExtResource( 23 )
+
+[node name="PlantF32" type="Sprite" parent="Decoration"]
+position = Vector2( -2976, 112 )
+texture = ExtResource( 23 )
+
+[node name="PlantF33" type="Sprite" parent="Decoration"]
+position = Vector2( -2912, 112 )
+texture = ExtResource( 23 )
+
+[node name="PlantF34" type="Sprite" parent="Decoration"]
+position = Vector2( -3296, 112 )
+texture = ExtResource( 23 )
+
+[node name="PlantF35" type="Sprite" parent="Decoration"]
+position = Vector2( -3232, 112 )
+texture = ExtResource( 23 )
+
+[node name="PlantF36" type="Sprite" parent="Decoration"]
+position = Vector2( -3232, -144 )
+texture = ExtResource( 23 )
+
+[node name="PlantF37" type="Sprite" parent="Decoration"]
+position = Vector2( -3168, -144 )
+texture = ExtResource( 23 )
+
+[node name="PlantF38" type="Sprite" parent="Decoration"]
+position = Vector2( -4000, -1168 )
+texture = ExtResource( 23 )
+
+[node name="PlantF39" type="Sprite" parent="Decoration"]
+position = Vector2( -3936, -1168 )
+texture = ExtResource( 23 )
+
+[node name="PlantF40" type="Sprite" parent="Decoration"]
+position = Vector2( -3360, -912 )
+texture = ExtResource( 23 )
+
+[node name="PlantF41" type="Sprite" parent="Decoration"]
+position = Vector2( -3296, -912 )
+texture = ExtResource( 23 )
+
+[node name="PlantG" type="Sprite" parent="Decoration"]
+position = Vector2( -3488, -920 )
+texture = ExtResource( 28 )
+
+[node name="PlantG2" type="Sprite" parent="Decoration"]
+position = Vector2( -3688, -1048 )
+texture = ExtResource( 28 )
+
+[node name="PlantG3" type="Sprite" parent="Decoration"]
+position = Vector2( -4064, -1176 )
+texture = ExtResource( 28 )
+
+[node name="PlantG4" type="Sprite" parent="Decoration"]
+position = Vector2( -3872, -1176 )
+texture = ExtResource( 28 )
+
+[node name="PlantG5" type="Sprite" parent="Decoration"]
+position = Vector2( -4320, -1304 )
+texture = ExtResource( 28 )
+
+[node name="PlantG6" type="Sprite" parent="Decoration"]
+position = Vector2( -4256, -1304 )
+texture = ExtResource( 28 )
+
+[node name="PlantG7" type="Sprite" parent="Decoration"]
+position = Vector2( -4192, -1304 )
+texture = ExtResource( 28 )
+
+[node name="PlantG8" type="Sprite" parent="Decoration"]
+position = Vector2( -4384, -1432 )
+texture = ExtResource( 28 )
+
+[node name="PlantG9" type="Sprite" parent="Decoration"]
+position = Vector2( -4448, -1432 )
+texture = ExtResource( 28 )
+
+[node name="PlantG10" type="Sprite" parent="Decoration"]
+position = Vector2( -4512, -1432 )
+texture = ExtResource( 28 )
+
+[node name="PlantG11" type="Sprite" parent="Decoration"]
+position = Vector2( -4576, -1432 )
+texture = ExtResource( 28 )
+
+[node name="PlantG12" type="Sprite" parent="Decoration"]
+position = Vector2( -4640, -1432 )
+texture = ExtResource( 28 )
+
+[node name="PlantG13" type="Sprite" parent="Decoration"]
+position = Vector2( -4704, -1432 )
+texture = ExtResource( 28 )
+
+[node name="PlantG14" type="Sprite" parent="Decoration"]
+position = Vector2( -4768, -1432 )
+texture = ExtResource( 28 )
+
+[node name="PlantG15" type="Sprite" parent="Decoration"]
+position = Vector2( -4832, -1432 )
+texture = ExtResource( 28 )
+
+[node name="PlantG16" type="Sprite" parent="Decoration"]
+position = Vector2( -4896, -1432 )
+texture = ExtResource( 28 )
+
+[node name="PlantG17" type="Sprite" parent="Decoration"]
+position = Vector2( -4960, -1432 )
+texture = ExtResource( 28 )
+
+[node name="PlantG18" type="Sprite" parent="Decoration"]
+position = Vector2( -5024, -1432 )
+texture = ExtResource( 28 )
+
+[node name="PlantG19" type="Sprite" parent="Decoration"]
+position = Vector2( -5088, -1432 )
+texture = ExtResource( 28 )
+
+[node name="PlantG20" type="Sprite" parent="Decoration"]
+position = Vector2( -5160, -1432 )
+texture = ExtResource( 28 )
+
+[node name="PlantG21" type="Sprite" parent="Decoration"]
+position = Vector2( -5224, -1432 )
+texture = ExtResource( 28 )
+
+[node name="PlantG22" type="Sprite" parent="Decoration"]
+position = Vector2( -5288, -1432 )
+texture = ExtResource( 28 )
+
+[node name="PlantG23" type="Sprite" parent="Decoration"]
+position = Vector2( -5352, -1432 )
+texture = ExtResource( 28 )
+
+[node name="PlantG24" type="Sprite" parent="Decoration"]
+position = Vector2( -5408, -1432 )
+texture = ExtResource( 28 )
+
+[node name="PlantG25" type="Sprite" parent="Decoration"]
+position = Vector2( -5472, -1432 )
+texture = ExtResource( 28 )
+
+[node name="PlantG26" type="Sprite" parent="Decoration"]
+position = Vector2( -5536, -1432 )
+texture = ExtResource( 28 )
+
+[node name="PlantG27" type="Sprite" parent="Decoration"]
+position = Vector2( -5600, -1432 )
+texture = ExtResource( 28 )
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 17 )
 collision_mask = 34894
@@ -388,7 +1841,7 @@ position = Vector2( -864, -992 )
 position = Vector2( -3040, 96 )
 
 [node name="BoxNormal5" parent="." instance=ExtResource( 12 )]
-position = Vector2( -872, -224 )
+position = Vector2( -864, -224 )
 
 [node name="BoxFloat" parent="." instance=ExtResource( 13 )]
 position = Vector2( 96, 224 )
