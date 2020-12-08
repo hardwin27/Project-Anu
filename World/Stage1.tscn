@@ -1881,19 +1881,19 @@ position = Vector2( 1120, 800 )
 texture = ExtResource( 31 )
 
 [node name="Spike115" type="Sprite" parent="Decoration"]
-position = Vector2( 168, 168 )
+position = Vector2( 160, 160 )
 texture = ExtResource( 31 )
 
 [node name="Spike116" type="Sprite" parent="Decoration"]
-position = Vector2( 232, 168 )
+position = Vector2( 224, 160 )
 texture = ExtResource( 31 )
 
 [node name="Spike117" type="Sprite" parent="Decoration"]
-position = Vector2( 296, 168 )
+position = Vector2( 288, 160 )
 texture = ExtResource( 31 )
 
 [node name="Spike118" type="Sprite" parent="Decoration"]
-position = Vector2( 360, 168 )
+position = Vector2( 352, 160 )
 texture = ExtResource( 31 )
 
 [node name="TileMap3" type="TileMap" parent="."]

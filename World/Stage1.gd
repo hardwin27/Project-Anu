@@ -18,7 +18,7 @@ var _objective_counter = 0
 
 func _ready():
 	_player.set_current_state("ON_CUTSCENE")
-	_little_girl._anim_player.play("Sad")
+#	_little_girl._anim_player.play("Sad")
 
 
 func _unhandled_key_input(event):
