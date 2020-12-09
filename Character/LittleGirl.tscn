@@ -2513,23 +2513,23 @@ position = Vector2( 0, 7 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="Leg" type="Sprite" parent="Appearance/Hip"]
-position = Vector2( 8, 14 )
-rotation = -0.523599
+position = Vector2( 9, 15 )
 texture = ExtResource( 1 )
 
 [node name="Leg2" type="Sprite" parent="Appearance/Hip"]
-position = Vector2( -8, 14 )
-rotation = 0.523599
+position = Vector2( -9, 15 )
+scale = Vector2( -1, 1 )
 texture = ExtResource( 1 )
 
 [node name="Torso" type="Sprite" parent="Appearance/Hip"]
-position = Vector2( 0, -7 )
-rotation = 0.0872665
+position = Vector2( 2, -2 )
+rotation = 0.174533
 texture = ExtResource( 7 )
 
 [node name="Head" type="Sprite" parent="Appearance/Hip/Torso"]
-position = Vector2( 2, -30 )
-texture = ExtResource( 5 )
+position = Vector2( 0, -28.5 )
+rotation = -0.0872665
+texture = ExtResource( 10 )
 
 [node name="Hair" type="Sprite" parent="Appearance/Hip/Torso/Head"]
 position = Vector2( 0, 4 )
@@ -2537,10 +2537,9 @@ z_index = -1
 texture = ExtResource( 6 )
 
 [node name="Arm" type="Sprite" parent="Appearance/Hip/Torso"]
-position = Vector2( 2, -3 )
-rotation = 0.698132
-scale = Vector2( -1, 1 )
-z_index = -1
+position = Vector2( 15.5, -20 )
+rotation = -0.427606
+scale = Vector2( 1, -1 )
 texture = ExtResource( 3 )
 
 [node name="Hand" type="Sprite" parent="Appearance/Hip/Torso/Arm"]
@@ -2548,9 +2547,9 @@ position = Vector2( 2, 18 )
 texture = ExtResource( 4 )
 
 [node name="Arm2" type="Sprite" parent="Appearance/Hip/Torso"]
-position = Vector2( -10, 3 )
-rotation = -1.0472
-scale = Vector2( -1, 1 )
+position = Vector2( -16.5, -13 )
+rotation = 0.174533
+scale = Vector2( -1, -1 )
 texture = ExtResource( 3 )
 
 [node name="Hand2" type="Sprite" parent="Appearance/Hip/Torso/Arm2"]
@@ -2561,6 +2560,5 @@ texture = ExtResource( 4 )
 
 [node name="WhitePuff" type="Sprite" parent="Effect"]
 visible = false
-modulate = Color( 1, 1, 1, 0 )
-scale = Vector2( 0.25, 0.25 )
+scale = Vector2( 0.04, 0.04 )
 texture = ExtResource( 9 )

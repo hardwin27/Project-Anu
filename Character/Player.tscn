@@ -1628,16 +1628,17 @@ position = Vector2( 0, 8 )
 scale = Vector2( 0.25, 0.25 )
 
 [node name="Leg" type="Sprite" parent="Appearance/Hip"]
-position = Vector2( -32, 52 )
-scale = Vector2( -1, 1 )
+position = Vector2( -20, 52 )
+rotation = 0.523599
 z_index = -1
 texture = ExtResource( 5 )
 region_enabled = true
 region_rect = Rect2( 570, 270, 70, 60 )
 
 [node name="Leg2" type="Sprite" parent="Appearance/Hip"]
-position = Vector2( 28, 52 )
-z_index = -1
+position = Vector2( 20, 48 )
+rotation = -0.523599
+z_index = -2
 texture = ExtResource( 5 )
 region_enabled = true
 region_rect = Rect2( 570, 270, 70, 60 )
@@ -1664,7 +1665,8 @@ region_enabled = true
 region_rect = Rect2( 650, 10, 270, 240 )
 
 [node name="Arm" type="Sprite" parent="Appearance/Hip/Torso"]
-position = Vector2( -56, -20 )
+position = Vector2( -40, -24 )
+rotation = -0.523599
 texture = ExtResource( 5 )
 region_enabled = true
 region_rect = Rect2( 370, 270, 50, 110 )
@@ -1677,15 +1679,16 @@ region_enabled = true
 region_rect = Rect2( 470, 270, 60, 60 )
 
 [node name="Arm2" type="Sprite" parent="Appearance/Hip/Torso"]
-position = Vector2( 52, -20 )
-scale = Vector2( -1, 1 )
+position = Vector2( 24, -28 )
+rotation = 0.523599
+z_index = -1
 texture = ExtResource( 5 )
 region_enabled = true
 region_rect = Rect2( 370, 270, 50, 110 )
 
 [node name="Hand2" type="Sprite" parent="Appearance/Hip/Torso/Arm2"]
-position = Vector2( -7.5, 43.5 )
-rotation = -0.261799
+position = Vector2( -1.5, 43.5 )
+rotation = -0.785398
 texture = ExtResource( 5 )
 region_enabled = true
 region_rect = Rect2( 470, 270, 60, 60 )
