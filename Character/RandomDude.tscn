@@ -12,7 +12,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 33 )
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=2]
 resource_name = "Angry"
 length = 2.0
 loop = true
@@ -461,8 +461,7 @@ tracks/36/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "Idle"
+[sub_resource type="Animation" id=3]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Appearance/Hip:position")
@@ -909,8 +908,7 @@ tracks/36/keys = {
 "values": [ ExtResource( 7 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "Shocked"
+[sub_resource type="Animation" id=4]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Appearance/Hip:position")
 tracks/0/interp = 1
@@ -1356,8 +1354,7 @@ tracks/36/keys = {
 "values": [ ExtResource( 8 ) ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "Walk"
+[sub_resource type="Animation" id=5]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -1523,10 +1520,10 @@ tracks/13/loop_wrap = true
 tracks/13/imported = false
 tracks/13/enabled = true
 tracks/13/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0 ]
+"values": [ 0.0, 5.0, 0.0 ]
 }
 tracks/14/type = "value"
 tracks/14/path = NodePath("Appearance/Hip/Torso:scale")
@@ -1823,11 +1820,12 @@ scale = Vector2( 0.36, 0.36 )
 
 [node name="Leg" type="Sprite" parent="Appearance/Hip"]
 position = Vector2( 19.5, 19.5 )
+rotation = -0.261799
 texture = ExtResource( 3 )
 
 [node name="Leg2" type="Sprite" parent="Appearance/Hip"]
-position = Vector2( -19.5, 19.5 )
-scale = Vector2( -1, 1 )
+position = Vector2( -11, 22 )
+rotation = 0.261799
 texture = ExtResource( 3 )
 
 [node name="Torso" type="Sprite" parent="Appearance/Hip"]
@@ -1839,7 +1837,9 @@ position = Vector2( 2.5, -80.5 )
 texture = ExtResource( 7 )
 
 [node name="Arm" type="Sprite" parent="Appearance/Hip/Torso"]
-position = Vector2( 47, 11 )
+position = Vector2( 19.5, 8 )
+rotation = 0.174533
+scale = Vector2( -1, 1 )
 z_index = -1
 texture = ExtResource( 4 )
 
@@ -1848,9 +1848,9 @@ position = Vector2( 3, 36 )
 texture = ExtResource( 5 )
 
 [node name="Arm2" type="Sprite" parent="Appearance/Hip/Torso"]
-position = Vector2( -47, 11 )
+position = Vector2( -30.5, 13.5 )
+rotation = -0.523599
 scale = Vector2( -1, 1 )
-z_index = -1
 texture = ExtResource( 4 )
 
 [node name="Hand2" type="Sprite" parent="Appearance/Hip/Torso/Arm2"]
@@ -1859,7 +1859,7 @@ texture = ExtResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
-anims/Angry = SubResource( 5 )
-anims/Idle = SubResource( 2 )
-anims/Shocked = SubResource( 3 )
-anims/Walk = SubResource( 4 )
+anims/Angry = SubResource( 2 )
+anims/Idle = SubResource( 3 )
+anims/Shocked = SubResource( 4 )
+anims/Walk = SubResource( 5 )
