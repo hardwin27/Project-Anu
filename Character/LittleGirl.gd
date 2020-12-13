@@ -1,6 +1,5 @@
 extends Npc
 
-onready var _anim_player = $AnimationPlayer
 onready var _world = get_parent()
 
 var _found_first_note = false
@@ -51,7 +50,7 @@ func chat(source_position, dialog_box):
 		dialog_box.append_text("???: Kyoko. *sob* I'm Hikari.[break]", 100)
 		yield(dialog_box, "break_ended")
 		dialog_box.hide_box()
-#		_anim_player.play("Normal")
+		_anim_player.play("Idle")
 		dialog_box.append_text("Hikari: Miss Kyoko, did you find any other notes?[break]", 100)
 		yield(dialog_box, "break_ended")
 		dialog_box.hide_box()
@@ -64,7 +63,6 @@ func chat(source_position, dialog_box):
 		dialog_box.append_text("Hikari: i have three of these[break]", 100)
 		yield(dialog_box, "break_ended")
 		dialog_box.hide_box()
-#		_anim_player.play("Sad")
 		dialog_box.append_text("Hikari: I, i was playing around with my friends, then i got lost in this place[break]", 100)
 		yield(dialog_box, "break_ended")
 		dialog_box.hide_box()
@@ -74,6 +72,7 @@ func chat(source_position, dialog_box):
 		dialog_box.append_text("Kyoko: Err, okay...[break]", 100)
 		yield(dialog_box, "break_ended")
 		dialog_box.hide_box()
+		_anim_player.play("Sad")
 		dialog_box.append_text("Hikari: Then, *sob* bad creature appeare *sob* and, and i ran away...[break]", 100)
 		yield(dialog_box, "break_ended")
 		dialog_box.hide_box()
@@ -107,7 +106,7 @@ func chat(source_position, dialog_box):
 		dialog_box.append_text("Kyoko: ...I'll do my best...[break]", 100)
 		yield(dialog_box, "break_ended")
 		dialog_box.hide_box()
-#		_anim_player.play("Normal")
+		_anim_player.play("Idle")
 		dialog_box.append_text("Hikari: Thank you[break]", 100)
 		yield(dialog_box, "break_ended")
 		dialog_box.hide_box()
@@ -124,10 +123,6 @@ func chat(source_position, dialog_box):
 		yield(dialog_box, "break_ended")
 		dialog_box.hide_box()
 		dialog_box.append_text("Kyoko: Yeah, sure...[break]", 100)
-		yield(dialog_box, "break_ended")
-		dialog_box.hide_box()
-#		_anim_player.play("Happy")
-		dialog_box.append_text("Hikari: *smile*[break]", 100)
 		yield(dialog_box, "break_ended")
 		dialog_box.hide_box()
 		dialog_box.append_text("Hikari: Alright, let's go!!![break]", 100)

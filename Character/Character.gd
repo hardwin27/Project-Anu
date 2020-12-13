@@ -7,7 +7,8 @@ enum {
 	ATTACK,
 	INTERACTING,
 	PLACE_ITEM,
-	ON_CUTSCENE
+	ON_CUTSCENE,
+	DEAD
 	}
 
 export var _motion = Vector2()

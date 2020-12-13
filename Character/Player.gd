@@ -2,6 +2,7 @@ extends Character
 
 signal _change_inventory(index)
 signal _update_slot(index, preview)
+signal _dead
 
 onready var _anim_player = $AnimationPlayer
 onready var _appearance = $Appearance
@@ -22,6 +23,7 @@ var _interact_with_object_func = null
 var _is_attacked = 0
 var _inventory = [null, null, null]
 var _inventory_index = 0
+var _is_using_sword = false
 
 func _ready():
 	set_physics_process(true)
@@ -34,15 +36,23 @@ func _unhandled_input(event):
 		
 		if _npc != null:
 			if _current_state != ON_CUTSCENE:
+				_anim_player.play("Normal")
 				_anim_player.play("Idle")
 				_current_state = ON_CUTSCENE
+				_camera.zoom.x = 0.5
+				_camera.zoom.y = 0.5
 				_npc.chat(position, _dialog_box)
 				yield(_npc, "_chat_finish")
+				_camera.zoom.x = 1
+				_camera.zoom.y = 1
 				_current_state = IDLE
 	
 	if event.is_action("Attack") and _current_state != PLACE_ITEM:
-		_anim_player.play("Attack")
 		_current_state = ATTACK
+		if _is_using_sword:
+			_anim_player.play("AttackWithSword")
+		else:
+			_anim_player.play("Attack")
 	
 	if event.is_action("Attack") and _current_state == PLACE_ITEM:
 		if _item_preview != null:
@@ -125,7 +135,7 @@ func _on_InteractionArea_body_exited(body):
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
-	if anim_name == "Attack":
+	if anim_name == "Attack" or anim_name == "AttackWithSword":
 		_current_state = IDLE
 	elif anim_name == "FirstTimeEnteringDream":
 		_dialog_box.append_text("Kyoko: ...What the...[break]", 100)
@@ -170,7 +180,7 @@ func _on_PlayerHitArea_area_entered(area):
 		_world.add_child(camera)
 		camera.position = get_global_position()
 		camera.current = true
-		queue_free()
+		dead()
 
 
 func _on_PlayerHitArea_body_entered(body):
@@ -182,8 +192,8 @@ func _on_PlayerHitArea_body_entered(body):
 		_world.add_child(camera)
 		camera.position = get_global_position()
 		camera.current = true
-		queue_free()
-		
+		dead()
+	
 
 func get_direction():
 	return  Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
@@ -199,10 +209,22 @@ func cayote_jump():
 	_can_cayote_jump = false
 
 
+func dead():
+	_current_state = ON_CUTSCENE
+	_anim_player.play("Dead")
+	emit_signal("_dead")
+
+
+func revived():
+	_anim_player.play("Revived")
+	_health = 200
+	_camera.current = true
+
+
 func place_item():
 	if _inventory[_inventory_index] != null:
 		var item = load(_inventory[_inventory_index].get_item()).instance()
-		_world.add_child(item)
+		_world._spawn_node.add_child(item)
 		item.set_global_position(_placing_area.get_node("PlacingPosition").get_global_position())
 		_inventory[_inventory_index] = null
 		emit_signal("_update_slot", _inventory_index, null)
@@ -232,6 +254,10 @@ func change_inventory_index(index):
 func set_interact_with_object_func(function):
 	_interact_with_object_func = function
 	_can_interact_with_object = true
+
+
+func set_is_using_sword(value):
+	_is_using_sword = value
 
 
 func remove_interact_with_object_func():

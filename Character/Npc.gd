@@ -2,6 +2,7 @@ class_name Npc
 extends KinematicBody2D
 
 onready var _appearance = $Appearance
+onready var _anim_player = $AnimationPlayer
 
 var _motion = Vector2.ZERO
 
@@ -34,3 +35,7 @@ func set_npc_direction(source_position):
 		_appearance.scale.x = -1
 	else:
 		_appearance.scale.x = 1
+
+
+func play_animation(anim_name):
+	_anim_player.play(anim_name)

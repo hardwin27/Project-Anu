@@ -23,6 +23,9 @@ custom_fonts/font = SubResource( 1 )
 text = "This is Title"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="PlayButton" parent="." instance=ExtResource( 2 )]
 margin_left = 384.0
