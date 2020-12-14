@@ -15,6 +15,8 @@ func _on_Teleporter_body_exited(body):
 
 func teleport():
 	if _can_teleport:
+		get_parent()._ui.play_transition("out")
+		yield(get_parent()._ui._anim_player, "animation_finished")
 		get_tree().change_scene_to(_next_scene)
 
 

@@ -4,6 +4,7 @@ signal _revived
 
 onready var _slots = [$Slot0, $Slot1, $Slot2]
 onready var _dead_layer = $CanvasLayer/DeadLayer
+onready var _anim_player = $AnimationPlayer
 
 var _selected_slot = 0
 
@@ -38,6 +39,13 @@ func select_slot():
 
 func player_dead():
 	_dead_layer.visible = true
+
+
+func play_transition(value):
+	if value == "in":
+		_anim_player.play("TransitionIn")
+	elif value == "out":
+		_anim_player.play("TransitionOut")
 
 
 func _on_YesButton_button_up():

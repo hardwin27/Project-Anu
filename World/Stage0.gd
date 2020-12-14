@@ -2,6 +2,7 @@ extends Stage
 
 onready var _door_to_bedroom = $DoorToBedroom
 onready var _door_to_livingroom = $DoorToLivingroom
+onready var _anim_player = $AnimationPlayer
 
 var _is_music_playing = false
 var _is_first_interaction_with_bed = true
@@ -10,6 +11,10 @@ var _next_scene_path = "res://World/Stage1.tscn"
 
 func _ready():
 	_player.set_current_state("ON_CUTSCENE")
+	_ui.play_transition("in")
+	yield(_ui._anim_player, "animation_finished")
+	_anim_player.play("ImHome")
+	
 
 
 func _unhandled_key_input(event):
@@ -109,12 +114,6 @@ func interact_with_bed():
 			yield(_dialog_box, "break_ended")
 			_dialog_box.hide_box()
 	else:
-		_dialog_box.append_text("Kyoko: \"Phew...\"[break]", 100)
-		yield(_dialog_box, "break_ended")
-		_dialog_box.hide_box()
-		_dialog_box.append_text("Kyoko: \"A nice relaxing bed after work is sure the best.\"[break]", 100)
-		yield(_dialog_box, "break_ended")
-		_dialog_box.hide_box()
 		_dialog_box.append_text("Kyoko: \"...\"[break]", 100)
 		yield(_dialog_box, "break_ended")
 		_dialog_box.hide_box()
@@ -142,18 +141,14 @@ func interact_with_bed():
 		_dialog_box.append_text("Kyoko: \"...I wish I have more confidence in my singing back then...\"[break]", 100)
 		yield(_dialog_box, "break_ended")
 		_dialog_box.hide_box()
-		_dialog_box.append_text("Kyoko: \"...things might....\"[break]", 100)
+		_dialog_box.append_text("Kyoko: \"...What am talking about...\"[break]", 100)
 		yield(_dialog_box, "break_ended")
 		_dialog_box.hide_box()
-		_dialog_box.append_text("Kyoko: \"...a bit...\"[break]", 100)
+		_dialog_box.append_text("Kyoko: \"...let's just go to sleep...\"[break]", 100)
 		yield(_dialog_box, "break_ended")
 		_dialog_box.hide_box()
-		_dialog_box.append_text("Kyoko: \"...different...\"[break]", 100)
-		yield(_dialog_box, "break_ended")
-		_dialog_box.hide_box()
-		_dialog_box.append_text("Kyoko: \"...zzz...\"[break]", 100)
-		yield(_dialog_box, "break_ended")
-		_dialog_box.hide_box()
+		_ui.play_transition("out")
+		yield(_ui._anim_player, "animation_finished")
 		get_tree().change_scene(_next_scene_path)
 	_player.set_current_state("IDLE")
 

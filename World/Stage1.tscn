@@ -11,7 +11,7 @@
 [ext_resource path="res://Object/Gate.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Object/Teleporter.tscn" type="PackedScene" id=10]
 [ext_resource path="res://World/Stage2.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Assets/LittleGirl.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Character/LittleGirl.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Assets/circle_05.png" type="Texture" id=13]
 [ext_resource path="res://Character/GiantGuardian.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Assets/plantDark_1.png" type="Texture" id=15]
@@ -378,7 +378,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 256, 144 ), Vector2( 256, 872 ) ]
+"values": [ Vector2( 255, 179 ), Vector2( 256, 872 ) ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath(".")
@@ -2428,7 +2428,7 @@ physics_material_override = SubResource( 18 )
 position = Vector2( 8096, -352 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 256, 144 )
+position = Vector2( 255, 179 )
 z_index = -10
 
 [node name="Camera2D" parent="Player" index="3"]
@@ -2450,7 +2450,6 @@ position = Vector2( 4896, -416 )
 position = Vector2( 8096, -416 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "FIrstTimeEnteringDream"
 anims/EarthquakeStarts = SubResource( 19 )
 anims/FIrstTimeEnteringDream = SubResource( 20 )
 anims/GuardianChamberPt1 = SubResource( 21 )

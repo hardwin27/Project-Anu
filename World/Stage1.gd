@@ -24,6 +24,8 @@ func _ready():
 	yield(_player._anim_player, "animation_finished")
 	_player.play_animation("Idle")
 	_little_girl._anim_player.play("Sad")
+	_ui.play_transition("in")
+	_anim_player.play("FIrstTimeEnteringDream")
 
 
 func _unhandled_key_input(event):
@@ -195,7 +197,7 @@ func _on_EnemySpotted_body_entered(body):
 	little_girl._anim_player.play("Transform")
 	yield(little_girl._anim_player, "animation_finished")
 	body.play_animation("Happy")
-	yield(body._anim_player, "animaion_finished")
+	yield(body._anim_player, "animation_finished")
 	body.play_animation("GetSword")
 	yield(body._anim_player, "animation_finished")
 	body.play_animation("WeaponUp")

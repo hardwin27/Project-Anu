@@ -14,10 +14,13 @@ var _little_girl_path = "res://Character/LittleGirl.tscn"
 
 
 func _ready():
-#	_player.set_current_state("ON_CUTSCENE")
+	_player.set_current_state("ON_CUTSCENE")
 	_player.set_is_using_sword(true)
 	_player.play_animation("Happy")
 	_dude.play_animation("Angry")
+	_ui.play_transition("in")
+	yield(_ui._anim_player, "animation_finished")
+	_anim_player.play("ArrivedOnNewArea1")
 
 
 func _unhandled_key_input(event):
@@ -757,3 +760,5 @@ func _on_MeetAngelo_body_entered(body):
 	_dialog_box.hide_box()
 	body.set_current_state("IDLE")
 	_meet_angelo.queue_free()
+	_ui.play_transition("out")
+	yield(_ui._anim_player, "animation_finished")
