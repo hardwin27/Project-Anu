@@ -5515,67 +5515,68 @@ position = Vector2( 0, 8 )
 scale = Vector2( 0.25, 0.25 )
 
 [node name="Leg" type="Sprite" parent="Appearance/Hip"]
-position = Vector2( -24, 52 )
+position = Vector2( -28, 52 )
+scale = Vector2( -1, 1 )
 z_index = -1
 texture = ExtResource( 5 )
 region_enabled = true
 region_rect = Rect2( 570, 270, 70, 60 )
 
 [node name="Leg2" type="Sprite" parent="Appearance/Hip"]
-position = Vector2( 28, 48 )
-z_index = -2
+position = Vector2( 28, 52 )
+z_index = -1
 texture = ExtResource( 5 )
 region_enabled = true
 region_rect = Rect2( 570, 270, 70, 60 )
 
 [node name="Torso" type="Sprite" parent="Appearance/Hip"]
 position = Vector2( 0, -4 )
-rotation = -0.0872665
 z_index = -1
 texture = ExtResource( 5 )
 region_enabled = true
 region_rect = Rect2( 210, 277, 141, 143 )
 
 [node name="Head" type="Sprite" parent="Appearance/Hip/Torso"]
-position = Vector2( 4, -92 )
-rotation = 0.0872665
+position = Vector2( 0, -92 )
 z_index = 1
 texture = ExtResource( 5 )
 region_enabled = true
 region_rect = Rect2( 248, 10, 180, 240 )
 
 [node name="Hair" type="Sprite" parent="Appearance/Hip/Torso/Head"]
-position = Vector2( -4, -4 )
-rotation = -0.0872665
+position = Vector2( 0, -4 )
 z_index = -2
 texture = ExtResource( 5 )
 region_enabled = true
 region_rect = Rect2( 650, 275, 270, 240 )
 
 [node name="Arm" type="Sprite" parent="Appearance/Hip/Torso"]
-position = Vector2( -12.5, -41 )
-rotation = -1.22173
-z_index = 1
+position = Vector2( -52.0001, -24 )
+rotation = 0.174533
 texture = ExtResource( 5 )
 region_enabled = true
 region_rect = Rect2( 370, 270, 50, 110 )
 
 [node name="Hand" type="Sprite" parent="Appearance/Hip/Torso/Arm"]
 position = Vector2( -7.5, 43.5 )
+rotation = -0.436332
+z_index = -1
 texture = ExtResource( 5 )
 region_enabled = true
 region_rect = Rect2( 470, 270, 60, 60 )
 
 [node name="Arm2" type="Sprite" parent="Appearance/Hip/Torso"]
-position = Vector2( 72.5, -50 )
-rotation = -1.65806
-z_index = -1
+position = Vector2( 52, -24 )
+rotation = -0.174533
+scale = Vector2( -1, 1 )
 texture = ExtResource( 5 )
 region_enabled = true
 region_rect = Rect2( 370, 270, 50, 110 )
 
 [node name="Hand2" type="Sprite" parent="Appearance/Hip/Torso/Arm2"]
 position = Vector2( -7.5, 43.5 )
+rotation = -0.436332
+z_index = -1
 texture = ExtResource( 5 )
 region_enabled = true
 region_rect = Rect2( 470, 270, 60, 60 )
@@ -5655,6 +5656,7 @@ visible = false
 self_modulate = Color( 1, 0, 0, 1 )
 position = Vector2( 20, -7 )
 shape = SubResource( 18 )
+disabled = true
 
 [node name="AttackWithSwordCollision" type="CollisionShape2D" parent="AttackArea"]
 visible = false

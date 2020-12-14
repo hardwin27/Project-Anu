@@ -30,6 +30,9 @@ func _ready():
 
 
 func _unhandled_input(event):
+	if _current_state == ON_CUTSCENE:
+		return
+	
 	if event.is_action_pressed("interact"):
 		if _can_interact_with_object:
 			_interact_with_object_func.call_func()
